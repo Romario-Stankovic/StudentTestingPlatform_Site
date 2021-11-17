@@ -3,7 +3,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - Student</title>
+    <title>Login - Professor</title>
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <script src="js/login.js"></script>
 </head>
@@ -17,11 +17,15 @@
         <img src="img/uni-logo.png" class="logo">
         
         <div class="inputField" id="indexInputField">
-            <input type="text" autocomplete="off" required id="indexField">
-            <label >Index number</label>
+            <input type="text" autocomplete="off" required id="usernameField">
+            <label>Username</label>
+        </div>
+        <div class="inputField" id="indexInputField">
+            <input type="password" autocomplete="off" required id="passwordField">
+            <label>Password</label>
         </div>
 
-        <button class="button" onclick="studentLogin(event);">LOGIN</button>
+        <button class="button" onclick="professorLogin(event);">LOGIN</button>
     </form>
 
 </body>

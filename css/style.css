@@ -113,10 +113,11 @@ body {
     width: 65%;
     margin: 0 auto;
     display: block;
+    margin-bottom: 60px;
 }
 
 .loginForm .inputField {
-    margin: 75px auto;
+    margin: 30px auto;
     width: 75%;
 }
 
