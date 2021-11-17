@@ -5,22 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - Student</title>
     <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script src="js/login.js"></script>
 </head>
 
 <body>
     
-    <img src="img/page_background.jpeg" class="backgroundBanner">
+    <img src="img/page_background.jpeg" class="background">
+    <div class="backgroundOverlay"></div>
 
     <form class="loginForm">
         <img src="img/uni-logo.png" class="logo">
         
-        <div class="inputField">
-            <label class="inputLabel">INDEX NUMBER</label>
-            
-            <input type="text">
+        <div class="inputField" id="indexInputField">
+            <input type="text" autocomplete="off" required id="indexField">
+            <label >Index number:</label>
         </div>
 
-        <button class="button">LOGIN</button>
+        <button class="button" onclick="studentLogin(event);">LOGIN</button>
     </form>
 
 </body>
