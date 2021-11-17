@@ -1,0 +1,94 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #9b9b9b;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.backgroundBanner{
+    width: 100%;
+    visibility: hidden;
+    position:fixed;
+    z-index: -100;
+}
+
+.button {
+    background-color: #d71920;
+    color: #ffffff;
+    border-radius: 0.44rem;
+    width: 15rem;
+    height: 2rem;
+    border: none;
+}
+
+.inputField {
+    width: fit-content;
+    position: relative;
+}
+
+.inputField input{
+    border: none;
+    border-bottom: 2px solid #9b9b9b;
+    width: 15rem;
+}
+
+.inputField input:focus {
+    outline: none;
+    border-color: #d71920;
+}
+
+.inputField .inputLabel {
+    position: absolute;
+    pointer-events: none;
+    color:#9b9b9b;
+    left: 2px;
+    /* bottom: 2px; */
+    /* font-size: 1rem; */
+    font-style: italic;
+    transition-property: bottom font-size;
+    transition-duration: 0.15s;
+    transition-timing-function: ease-in-out;
+}
+
+.inputField .inputLabel{
+    bottom: 20px;
+    font-size: 0.8rem;
+} 
+
+.loginForm {
+    display: block;
+    margin: 0 auto;
+    background-color: #ffffff;
+    height: 320px;
+    width: 350px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 15px;
+}
+
+@media screen and (max-width: 660px){
+    .loginForm {
+        width: 80vw;
+        height: 80vw;
+        max-width: 350px;
+    }
+}
+
+.loginForm .inputField {
+    margin: 100px auto;
+}
+
+.loginForm .button {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.loginForm .logo{
+    width: 60%;
+    margin: 0 auto;
+    display: block;
+}
