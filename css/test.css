@@ -1,0 +1,158 @@
+.blueButton {
+    background-color: #197cd7;
+}
+
+.blueButton:hover {
+    background-color: #1667b3;
+}
+
+.blueButton:active {
+    background-color: #197cd7;
+}
+
+.greenButton {
+    background-color: #3acc07;
+}
+
+.greenButton:hover {
+    background-color: #2ca002;
+}
+
+.greenButton:active {
+    background-color: #3acc07;
+}
+
+.navbar {
+    width: calc(100vw - 50px);
+    height: 3.5rem;
+    position:relative;
+    margin: 25px auto;
+}
+
+.navbar .info {
+    position:relative;
+}
+
+.navbar .info .iconify {
+    width: 2rem;
+    height: 2rem;
+    display: inline-block;
+    position: absolute;
+    top: 0.75rem;
+    left: 1rem;
+}
+
+.navbar .info p {
+    display: inline-block;
+    position: absolute;
+    left: 3.5rem;
+    top: 0.1rem;
+    font-weight: 500;
+    font-size: 1rem;
+}
+
+.navbar .buttons{
+    display: inline-block;
+    position: absolute;
+    right: 1rem;
+    top: 0.75rem;
+}
+
+.navbar button {
+    width: 150px;
+    margin: 0px 5px;
+}
+
+.testContainer {
+    position: relative;
+    width: calc(100vw - 50px);
+    margin: 0 auto;
+    margin-bottom: 25px;
+    min-height: calc(100vh - 3.5rem - 75px);
+}
+
+.testContainer hr {
+    width: 95%;
+}
+
+.testContainer h3{
+    margin: 0;
+    padding-top: 10px;
+    text-align: center;
+}
+
+.testContainer .refreshButton {
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+    width: 150px;
+}
+
+.testList {
+    padding-bottom: 75px;
+}
+
+.test {
+    width: 95%;
+    background-color: #F2F2F2;
+    margin: 10px auto;
+    border-radius: 10px;
+    height: 3rem;
+    position:relative;
+}
+
+.test p {
+    display: inline-block;
+    margin-left: 1rem;
+    margin: 0;
+    position: absolute;
+    top: 0.75rem;
+    left: 0.5rem;
+}
+
+.test button {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    width: 150px;
+}
+
+@media screen and (max-width: 700px) {
+    .navbar {
+        height: 6.5rem;
+    }
+
+    .testContainer {
+        min-height: calc(100vh - 6rem - 75px);
+    }
+
+    .test {
+        height: 7rem;
+    }
+
+    .test p {
+        left: 5%;
+        width: 90%;
+        text-align: center;
+    }
+
+    .test button {
+        top: auto;
+        right: auto;
+        bottom: 1rem;
+        width: 90%;
+        left: 5%;
+    }
+
+    .navbar .buttons {
+        width: 100%;
+        top: auto;
+        bottom: 1rem;
+        left: 2.5%;
+    }
+
+    .navbar .buttons button {
+        width: 45%;
+    }
+
+}

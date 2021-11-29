@@ -4,27 +4,44 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - Professor</title>
+
+    <!-- Internal CSS -->
     <link rel="stylesheet" type="text/css" href="css/style.css">
+    
+    <!-- External JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    
+    <!-- Internal JS -->
     <script src="js/login.js"></script>
+    <script src="js/database.js"></script>
 </head>
 
 <body>
-    
+    <!-- Background -->
     <img src="img/page_background.jpeg" class="background">
     <div class="backgroundOverlay"></div>
 
-    <form class="loginForm">
+    <!-- Login Form -->
+    <form class="panel loginForm">
+
+        <!-- Logo -->
         <img src="img/uni-logo.png" class="logo">
         
+        <!-- Input Field -->
         <div class="inputField" id="indexInputField">
             <input type="text" autocomplete="off" required id="usernameField">
             <label>Username</label>
+            <p class="inputErrorMessage"></p>
         </div>
+
+        <!-- Input Field -->
         <div class="inputField" id="indexInputField">
             <input type="password" autocomplete="off" required id="passwordField">
             <label>Password</label>
+            <p class="inputErrorMessage"></p>
         </div>
 
+        <!-- Button -->
         <button class="button" onclick="professorLogin(event);">LOGIN</button>
     </form>
 

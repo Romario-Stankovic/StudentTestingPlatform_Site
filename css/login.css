@@ -1,0 +1,33 @@
+
+.loginForm {
+    display: block;
+    margin: 0 auto;
+    background-color: #ffffff;
+    width: 80vw;
+    height: 80vw;
+    max-width: 350px;
+    max-height: 320px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.loginForm .logo{
+    width: 65%;
+    margin: 1rem auto 40px auto;
+    display: block;
+}
+
+.loginForm .inputField {
+    margin: 25px auto 0px;
+    width: 75%;
+}
+
+.loginForm button {
+    position: absolute;
+    width: 75%;
+    bottom: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+}
