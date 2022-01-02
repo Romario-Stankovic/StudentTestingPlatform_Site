@@ -1,0 +1,59 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question</title>
+
+    <!-- Internal CSS  -->
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    
+    <!-- External JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://code.iconify.design/2/2.1.0/iconify.min.js"></script>
+    
+    <!-- Internal JS -->
+    <script src="js/database.js"></script>
+</head>
+
+<body>
+
+    <!-- Background -->
+    <img src="img/page_background.jpeg" class="background">
+    <div class="backgroundOverlay"></div>
+
+    <!-- Navigation bar -->
+    <nav class="panel">
+        <div class="info">
+            <p>$(TestName)</p>
+        </div>
+        <div class="timer">
+            <p>$(Time)</p>
+            <span class="iconify" data-icon="ant-design:clock-circle-outlined"></span>
+        </div>
+    </nav>
+
+    <!-- Question -->
+    <div class="panel question">
+        <p class="number">$(QuestionNumber)</p>
+        
+        <img src="img/user.png" id="questionImage">
+        <p class="text" id="questionText">Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque consequatur ipsum voluptatem, minus doloribus quo sapiente veniam esse. Rem modi velit nobis beatae culpa ratione necessitatibus magnam, voluptas nihil repellendus? Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consequatur aspernatur debitis modi minus cupiditate, quod perspiciatis veniam quidem ipsam itaque quasi illo voluptatem accusamus, reprehenderit qui. Odio impedit in sequi? Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt impedit iste numquam, rerum accusamus velit eos? Accusantium, error harum. Sunt, consequuntur aspernatur repellendus quidem sapiente tempora maxime quia culpa recusandae.</p>
+    </div>
+    <div class="answers">
+        <div class="panel answer">
+            <p>$(AnswerText)</p>
+            <input class="input" type="radio" name="answer" value="1">
+        </div>
+        <div class="panel answer">
+            <p>$(AnswerText)</p>
+            <input class="input" type="radio" name="answer" value="1">
+        </div>
+        <div class="panel answer">
+            <p>$(AnswerText)</p>
+            <input class="input" type="radio" name="answer" value="1">
+        </div>
+    </div>
+
+</body>
+</html>

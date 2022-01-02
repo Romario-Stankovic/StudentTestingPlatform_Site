@@ -1,0 +1,59 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Student</title>
+
+    <!-- Internal CSS  -->
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    
+    <!-- External JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    
+    <!-- Internal JS -->
+    <script src="js/login.js"></script>
+    <script src="js/database.js"></script>
+</head>
+
+<body>
+
+    <!-- Background -->
+    <img src="img/page_background.jpeg" class="background">
+    <div class="backgroundOverlay"></div>
+
+    <!-- Login Form -->
+    <form class="panel loginForm" id="studentLoginForm">
+
+        <!-- Logo -->
+        <img src="img/uni-logo.png" class="logo">
+
+        <!-- Input Field -->
+        <div id="studentForm">
+            <div class="inputField" id="indexInputField">
+                <input type="text" autocomplete="off" required id="indexField">
+                <label >Index number</label>
+                <p class="errorMessage" id="loginErrorMessage"></p>
+            </div>
+        </div>
+
+        <div id="professorForm">
+            <div class="inputField" id="indexInputField">
+                <input type="text" autocomplete="off" required id="usernameField">
+                <label>Username</label>
+                <p class="errorMessage"></p>
+            </div>
+    
+            <div class="inputField" id="indexInputField">
+                <input type="password" autocomplete="off" required id="passwordField">
+                <label>Password</label>
+                <p class="errorMessage"></p>
+            </div>
+        </div>
+
+        <!-- Button -->
+        <button onclick="login(event);">LOGIN</button>
+    </form>
+
+</body>
+</html>

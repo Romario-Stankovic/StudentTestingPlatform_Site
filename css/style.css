@@ -1,3 +1,434 @@
-@import url(elements.css);
-@import url(login.css);
-@import url(test.css);
+/* Common Elements */
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.background {
+    min-height: 100%;
+    width: 100%;
+    min-width: 700px;
+    position:fixed;
+    top: 0;
+    left: 0;
+    z-index: -100;
+}
+
+.backgroundOverlay{
+    background-color:rgba(0,0,0, 0.5);
+    width: 100%;
+    height: 100%;
+    position:fixed;
+    top: 0;
+    left: 0;
+    z-index: -99;
+}
+
+button {
+    background-color: #d71920;
+    color: #ffffff;
+    border-radius: 0.44rem;
+    width: 150px;
+    height: 32px;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #b5151a;
+}
+
+button:active {
+    background-color: #d71920;
+}
+
+.blueButton {
+    background-color: #197cd7;
+}
+
+.blueButton:hover {
+    background-color: #1667b3;
+}
+
+.blueButton:active {
+    background-color: #197cd7;
+}
+
+.greenButton {
+    background-color: #3acc07;
+}
+
+.greenButton:hover {
+    background-color: #2ca002;
+}
+
+.greenButton:active {
+    background-color: #3acc07;
+}
+
+.inputField {
+    width: 150px;
+    position: relative;
+    height: 20px;
+}
+
+.inputField input{
+    border: none;
+    border-bottom: 2px solid #9b9b9b;
+    width: 100%;
+}
+
+.inputField label {
+    position: absolute;
+    pointer-events: none;
+    color:#9b9b9b;
+    left: 2px;
+     bottom: 2px;
+    font-size: 1rem;
+    font-style: italic;
+    transition-property: bottom font-size;
+    transition-duration: 0.15s;
+    transition-timing-function: ease-in-out;
+    width: 100%;
+}
+
+.inputField .errorMessage {
+    width: 100%;
+    font-size: 8pt;
+    color:red;
+    margin: 0 auto;
+    margin-top: 5px;
+    visibility: hidden;
+}
+
+.inputField input:focus {
+    outline: none;
+    border-color: #d71920;
+}
+
+.inputField input:valid {
+    border-color: #d71920;
+}
+
+.inputField:focus-within label{
+    bottom: 20px;
+    font-size: 0.8rem;
+}
+
+.inputField input:valid + label{
+    bottom: 20px;
+    font-size: 0.8rem;
+}
+
+.panel {
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3);
+}
+
+hr {
+    height: 1px;
+    background-color: #9b9b9b;
+    border: none;
+}
+
+nav {
+    width: 95vw;
+    height: 3.5rem;
+    margin: 25px auto;
+    position: relative;
+}
+
+
+nav .iconify {
+    width: 2rem;
+    height: 2rem;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+nav p {
+    display: inline-block;
+    font-weight: 600;
+}
+
+nav button {
+    width: 150px;
+    margin: 0px 5px;
+}
+
+nav .info {
+    display: inline-block;
+    height: 100%;
+    margin-left: 10px;
+}
+
+nav .buttons {
+    display: inline-block;
+    position: absolute;
+    right: 1rem;
+    top: 0.75rem;
+}
+
+nav .timer {
+    display: inline-block;
+    position: absolute;
+    right: 1rem;
+}
+
+/* Login */
+
+.loginForm {
+    display: block;
+    margin: 0 auto;
+    background-color: #ffffff;
+    width: 80vw;
+    height: 80vw;
+    max-width: 350px;
+    max-height: 320px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.loginForm .logo{
+    width: 65%;
+    margin: 1rem auto 40px auto;
+    display: block;
+}
+
+.loginForm .inputField {
+    margin: 25px auto 0px;
+    width: 75%;
+}
+
+.loginForm button {
+    position: absolute;
+    width: 75%;
+    bottom: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* Test Page */
+
+.availableTestContainer {
+    position: relative;
+    width: 95vw;
+    margin: 0 auto;
+    margin-bottom: 25px;
+    min-height: calc(100vh - 3.5rem - 75px);
+}
+
+.availableTestContainer h3{
+    margin: 0;
+    padding-top: 20px;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.availableTestContainer .refreshButton {
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+    width: 150px;
+}
+
+.availableTestContainer .testList {
+    padding-bottom: 75px;
+}
+
+.test {
+    width: 95%;
+    background-color: #F2F2F2;
+    margin: 10px auto;
+    border-radius: 10px;
+    height: 3rem;
+    position:relative;
+}
+
+.test p {
+    display: inline-block;
+    margin-left: 1rem;
+    margin: 0;
+    position: absolute;
+    top: 0.75rem;
+    left: 0.75rem;
+}
+
+.test button {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    width: 150px;
+}
+
+@media screen and (max-width: 700px) {
+    .studentNavbar {
+        height: 6.5rem;
+    }
+
+    .availableTestContainer {
+        min-height: calc(100vh - 6rem - 75px);
+    }
+
+    .test {
+        height: 7rem;
+    }
+
+    .test p {
+        left: 5%;
+        width: 90%;
+        text-align: center;
+    }
+
+    .test button {
+        top: auto;
+        right: auto;
+        bottom: 1rem;
+        width: 90%;
+        left: 5%;
+    }
+
+    .studentNavbar .buttons {
+        width: calc(100% - 5px);
+        top: auto;
+        bottom: 1rem;
+        right: auto;
+        left: calc(4% - 5px);
+    }
+
+    .studentNavbar .buttons button {
+        width: 45%;
+    }
+
+}
+
+/* Question */
+
+.question {
+    width: 95vw;
+    margin: 25px auto;
+    display: grid;
+    grid-template-rows: 25px auto;
+    grid-template-columns: 30% auto;
+    gap: 20px;
+}
+
+.noImage {
+    grid-template-columns: 0 100%;
+    gap: 0;
+}
+
+.question .number {
+    grid-row: 1;
+    grid-column-start: 1;
+    grid-column-end: 3;
+    text-align: right;
+    margin: 0;
+    padding: 20px;
+}
+
+.question  img {
+    width: 100%;
+    padding: 20px;
+    grid-row: 2;
+    grid-column: 1;
+}
+
+.question .text {
+    grid-row: 2;
+    grid-column: 2;
+    text-align: justify;
+    margin: 0;
+    padding: 20px;
+}
+
+.answer {
+    width: 95vw;
+    margin: 0 auto;
+    min-height: 45px;
+    position: relative;
+    margin-bottom: 10px;
+}
+
+.answer p {
+    display: inline-block;
+    position: absolute;
+    margin: 0;
+    top: 12px;
+    left: 25px;
+}
+
+.answer input {
+    display: inline-block;
+    position: absolute;
+    top: 14px;
+    right: 25px;
+}
+
+/* Student profile */
+
+.finishedTestsContainer {
+    position: relative;
+    width: calc(100vw - 75px - 350px);
+    display: inline-block;
+    margin: 25px;
+    min-height: calc(100vh - 50px);
+    vertical-align: top;
+}
+
+.finishedTestsContainer h3 {
+    margin: 0;
+    margin-top: 20px;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.finishedTestsContainer .testList{
+    padding-bottom: 10px;
+}
+
+.profileBubble {
+    display: inline-block;
+    width: 350px;
+    margin: 25px 0;
+    vertical-align: top;
+    text-align: center;
+    position:relative;
+}
+
+.profileBubble h3 {
+    margin: 0;
+    margin-top: 20px;
+}
+
+.profileBubble img {
+    width: 180px;
+    height: 200px;
+    display: block;
+    margin: 1rem auto 1rem auto;
+    border-radius: 10px;
+    object-fit:cover;
+}
+
+.profileBubble p {
+    margin: 0;
+}
+
+.profileBubble .nameText {
+    font-weight: bold;
+}
+
+.profileBubble .indexText {
+    font-style: italic;
+    color: #9b9b9b;
+}
+
+.profileBubble button {
+    width: 250px;
+    margin: 20px auto 20px auto;
+}
