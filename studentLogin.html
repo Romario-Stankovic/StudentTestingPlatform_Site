@@ -1,0 +1,45 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Student</title>
+
+    <!-- Internal CSS  -->
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+
+    <!-- External JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <!-- Internal JS -->
+    <script src="js/login.js"></script>
+    <script src="js/database.js"></script>
+</head>
+
+<body>
+
+    <!-- Background -->
+    <img src="img/page_background.jpeg" class="background">
+    <div class="backgroundOverlay"></div>
+
+    <!-- Login Form -->
+    <form class="panel loginForm">
+
+        <!-- Logo -->
+        <img src="img/uni-logo.png" class="logo">
+
+        <!-- Input Field -->
+        <div class="inputField">
+            <input type="text" autocomplete="off" required id="indexField">
+            <label>Index number</label>
+            <p class="errorMessage" id="loginErrorMessage"></p>
+        </div>
+
+        <!-- Button -->
+        <button class="redButton" onclick="studentLogin(event);">LOGIN</button>
+    </form>
+
+</body>
+
+</html>

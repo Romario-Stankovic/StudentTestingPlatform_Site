@@ -1,35 +1,13 @@
 let urlParams = new URLSearchParams(window.location.search);
 let loginType = urlParams.get("type");
 
-function displayForm(){
-    let studentLogin = document.getElementById("studentForm");
-    let professorLogin = document.getElementById("professorForm");
-
-    if(loginType == "professor"){
-        studentLogin.remove();
-    }else {
-        professorLogin.remove();
-    }
-
-}
-
-function login(e){
+function studentLogin(e){
     e.preventDefault();
-
-    if(loginType == "professor"){
-        professorLogin();
-    }else {
-        studentLogin();
-    }
-
-}
-
-function studentLogin(){
     
     let indexNumber = document.getElementById("indexField").value;
     
     if(getStudent(indexNumber) != false){
-        window.location = "studentTests.html?index=" + indexNumber;
+        window.location = "testList.html?index=" + indexNumber;
     }else{
         let errorMessage = document.getElementById("loginErrorMessage");
         errorMessage.style.visibility = "visible";
@@ -37,11 +15,9 @@ function studentLogin(){
     }
 }
 
-function professorLogin(){
+function professorLogin(e){
+    e.preventDefault();
     let username = document.getElementById("usernameField").value;
     let password = document.getElementById("passwordField").value;
+    alert(username + " - " + password);
 }
-
-$(document).ready(function(){
-    displayForm();
-});

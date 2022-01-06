@@ -10,18 +10,13 @@ function displayStudentInfo(){
 }
 
 function displayTests(){
-
-    let testHTML =`
-        <div class="test">
-            <p>$(testName)</p>
-            <button class="greenButton" onclick="startTest($(testID));">Start</button>
-        </div>
-    `;
-    list  = document.getElementById("testList");
-    list.innerHTML = "";
+    let list = document.getElementById("testList");
     let tests = getAvailableTests();
+
+    clearContainer(list);
+
     for(i=0; i<tests.length; i++){
-        list.innerHTML += (testHTML.replace("$(testName)", tests[i].name).replace("$(testID)", tests[i].id));
+        addActiveTest(list, tests[i].id, tests[i].name);
     }
 }
 
@@ -30,7 +25,7 @@ function showProfile(){
 }
 
 function logout(){
-    document.location = "login.html";
+    document.location = "studentLogin.html";
 }
 
 function startTest(id){

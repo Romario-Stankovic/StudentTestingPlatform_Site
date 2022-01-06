@@ -18,8 +18,8 @@ body {
 
 .backgroundOverlay{
     background-color:rgba(0,0,0, 0.5);
-    width: 100%;
-    height: 100%;
+    width: 200%;
+    height: 200%;
     position:fixed;
     top: 0;
     left: 0;
@@ -27,9 +27,9 @@ body {
 }
 
 button {
-    background-color: #d71920;
-    color: #ffffff;
-    border-radius: 0.44rem;
+    background-color: #ffffff;
+    color: #000000;
+    border-radius: 7px;
     width: 150px;
     height: 32px;
     border: none;
@@ -37,35 +37,56 @@ button {
 }
 
 button:hover {
-    background-color: #b5151a;
+    background-color: #f2f2f2;
 }
 
 button:active {
+    background-color: #ffffff;
+}
+
+.redButton {
     background-color: #d71920;
+    color: #ffffff;
+}
+
+.redButton:hover {
+    background-color: #b5151a;
+    color: #ffffff;
+}
+
+.redButton:active {
+    background-color: #d71920;
+    color: #ffffff;
 }
 
 .blueButton {
     background-color: #197cd7;
+    color: #ffffff;
 }
 
 .blueButton:hover {
     background-color: #1667b3;
+    color: #ffffff;
 }
 
 .blueButton:active {
     background-color: #197cd7;
+    color: #ffffff;
 }
 
 .greenButton {
     background-color: #3acc07;
+    color: #ffffff;
 }
 
 .greenButton:hover {
     background-color: #2ca002;
+    color: #ffffff;
 }
 
 .greenButton:active {
     background-color: #3acc07;
+    color: #ffffff;
 }
 
 .inputField {
@@ -124,23 +145,24 @@ button:active {
 
 .panel {
     background-color: #ffffff;
-    border-radius: 10px;
+    border-radius: 7px;
     box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3);
 }
 
 hr {
-    height: 1px;
+    height: 2px;
+    border-radius: 2px;
     background-color: #9b9b9b;
     border: none;
 }
 
 nav {
     width: 95vw;
-    height: 3.5rem;
+    min-height: 3.5rem;
+    height: fit-content;
     margin: 25px auto;
     position: relative;
 }
-
 
 nav .iconify {
     width: 2rem;
@@ -185,9 +207,7 @@ nav .timer {
     margin: 0 auto;
     background-color: #ffffff;
     width: 80vw;
-    height: 80vw;
-    max-width: 350px;
-    max-height: 320px;
+    max-width: 400px;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -196,21 +216,21 @@ nav .timer {
 
 .loginForm .logo{
     width: 65%;
-    margin: 1rem auto 40px auto;
+    margin: 1rem auto 3rem auto;
     display: block;
 }
 
 .loginForm .inputField {
-    margin: 25px auto 0px;
+    margin: 2rem auto 0rem auto;
     width: 75%;
 }
 
 .loginForm button {
-    position: absolute;
+    margin: 0 auto;
     width: 75%;
-    bottom: 1rem;
-    left: 50%;
-    transform: translateX(-50%);
+    display: block;
+    margin-top: 4rem;
+    margin-bottom: 1.5rem;
 }
 
 /* Test Page */
@@ -245,7 +265,7 @@ nav .timer {
     width: 95%;
     background-color: #F2F2F2;
     margin: 10px auto;
-    border-radius: 10px;
+    border-radius: 7px;
     height: 3rem;
     position:relative;
 }
@@ -253,58 +273,14 @@ nav .timer {
 .test p {
     display: inline-block;
     margin-left: 1rem;
-    margin: 0;
-    position: absolute;
-    top: 0.75rem;
-    left: 0.75rem;
+    vertical-align: middle;
 }
 
 .test button {
     position: absolute;
     top: 0.5rem;
-    right: 0.5rem;
+    right: 0.75rem;
     width: 150px;
-}
-
-@media screen and (max-width: 700px) {
-    .studentNavbar {
-        height: 6.5rem;
-    }
-
-    .availableTestContainer {
-        min-height: calc(100vh - 6rem - 75px);
-    }
-
-    .test {
-        height: 7rem;
-    }
-
-    .test p {
-        left: 5%;
-        width: 90%;
-        text-align: center;
-    }
-
-    .test button {
-        top: auto;
-        right: auto;
-        bottom: 1rem;
-        width: 90%;
-        left: 5%;
-    }
-
-    .studentNavbar .buttons {
-        width: calc(100% - 5px);
-        top: auto;
-        bottom: 1rem;
-        right: auto;
-        left: calc(4% - 5px);
-    }
-
-    .studentNavbar .buttons button {
-        width: 45%;
-    }
-
 }
 
 /* Question */
@@ -315,6 +291,7 @@ nav .timer {
     display: grid;
     grid-template-rows: 25px auto;
     grid-template-columns: 30% auto;
+    grid-template-areas: "info info" "image text";
     gap: 20px;
 }
 
@@ -323,25 +300,32 @@ nav .timer {
     gap: 0;
 }
 
+.noImage img {
+    display: none;
+}
+
 .question .number {
-    grid-row: 1;
-    grid-column-start: 1;
-    grid-column-end: 3;
+    display: inline-block;
+    grid-area: info;
     text-align: right;
     margin: 0;
     padding: 20px;
 }
 
+.question hr {
+    grid-area: info;
+    width: calc(100% - 40px);
+    margin-top: 45px;
+}
+
 .question  img {
     width: 100%;
     padding: 20px;
-    grid-row: 2;
-    grid-column: 1;
+    grid-area: image;
 }
 
 .question .text {
-    grid-row: 2;
-    grid-column: 2;
+    grid-area: text;
     text-align: justify;
     margin: 0;
     padding: 20px;
@@ -357,28 +341,108 @@ nav .timer {
 
 .answer p {
     display: inline-block;
+    margin: 12px 40px 12px 10px;
+    user-select: none;
+    text-align: justify;
+    padding: 0;
+}
+
+.answer label {
+    width: 100%;
+    height: 100%;
+    display: block;
     position: absolute;
-    margin: 0;
-    top: 12px;
-    left: 25px;
+    top: 0;
+    left: 0;
+    cursor: pointer;
 }
 
 .answer input {
     display: inline-block;
     position: absolute;
-    top: 14px;
-    right: 25px;
+    top: 45%;
+    right: 10px;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+.questionButtons {
+    width: 95vw;
+    height: 32px;
+    margin: 25px auto 25px auto;
+}
+
+.questionButtons button {
+    margin-left: 10px;
+    width: 150px;
+    float: right;
+}
+
+/* Result */
+
+.resultForm {
+    display: inline-block;
+    margin: 0 auto;
+    background-color: #ffffff;
+    width: 80vw;
+    max-width: 400px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.resultForm h2{
+    margin: 0;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.resultForm p {
+    margin:0;
+    margin-top: 10px;
+}
+
+.resultForm .iconify {
+    width: 120px;
+    height: 120px;
+}
+
+.resultForm .pass {
+    color:#3acc07;
+}
+
+.resultForm .fail {
+    color:#d71920;
+    display:none;
+}
+
+.resultForm button {
+    margin: 0 auto;
+    width: 75%;
+    display: block;
+    margin-top: 4rem;
+    margin-bottom: 1.5rem;
 }
 
 /* Student profile */
 
-.finishedTestsContainer {
-    position: relative;
-    width: calc(100vw - 75px - 350px);
-    display: inline-block;
+
+.profile {
+    display: grid;
+    grid-template-columns: auto 300px;
+    grid-template-rows: auto;
+    grid-template-areas: "list info";
+    gap: 25px;
     margin: 25px;
+}
+
+.finishedTestsContainer {
+    grid-area: list;
     min-height: calc(100vh - 50px);
-    vertical-align: top;
 }
 
 .finishedTestsContainer h3 {
@@ -392,43 +456,183 @@ nav .timer {
     padding-bottom: 10px;
 }
 
-.profileBubble {
-    display: inline-block;
-    width: 350px;
-    margin: 25px 0;
-    vertical-align: top;
+.profileInfo {
+    grid-area: info;
+    width: 100%;
     text-align: center;
-    position:relative;
+    height: fit-content;
 }
 
-.profileBubble h3 {
+.profileInfo h3 {
     margin: 0;
     margin-top: 20px;
 }
 
-.profileBubble img {
+.profileInfo img {
     width: 180px;
     height: 200px;
-    display: block;
     margin: 1rem auto 1rem auto;
-    border-radius: 10px;
+    border-radius: 7px;
     object-fit:cover;
 }
 
-.profileBubble p {
+.profileInfo p {
     margin: 0;
 }
 
-.profileBubble .nameText {
+.profileInfo .userName {
     font-weight: bold;
 }
 
-.profileBubble .indexText {
+.profileInfo .userIndex {
     font-style: italic;
     color: #9b9b9b;
 }
 
-.profileBubble button {
-    width: 250px;
+.profileInfo button {
+    width: 80%;
     margin: 20px auto 20px auto;
+    max-width: 300px;
+}
+
+/* Test result view */
+
+.viewQuestion {
+    width: 95vw;
+    min-height: 3.5rem;
+    margin: 0 auto;
+    margin-bottom: 25px;
+    position:relative;
+}
+
+.viewQuestion .content {
+    display: none;
+    height: fit-content;
+    overflow: hidden;
+    padding-bottom: 1rem;
+}
+
+.viewQuestion .answer {
+    width: 95%;
+}
+
+.viewQuestion .answer p {
+    margin: 12px 40px 12px 0px;
+    padding: 0;
+}
+
+.viewQuestion .iconify {
+    width:2rem;
+    height: 2rem;
+    vertical-align: middle;
+    margin-left: 10px;
+}
+
+.viewQuestion label {
+    cursor: default;
+}
+
+.viewQuestion p{
+    display: inline-block;
+    padding-left: 1rem;
+}
+
+.viewQuestion button {
+    display: inline-block;
+    position:absolute;
+    right: 1rem;
+    top: 0.75rem;
+}
+
+.viewQuestion .question {
+    width: 95%;
+    grid-template-rows: 0px auto auto;
+}
+
+.viewQuestion .correctAnswer {
+    border: 2px solid #3acc07;
+}
+
+.viewQuestion .wrongAnswer {
+    border: 2px solid #d71920;
+}
+
+.correctIcon {
+    color: #3acc07;
+}
+
+.wrongIcon {
+    color: #d71920;
+}
+
+/* Media */
+
+@media screen and (max-width: 1000px){
+    .profile {
+        margin: 25px auto 25px auto;
+        width: 95%;
+        grid-template-columns: auto;
+        grid-template-rows: auto auto;
+        grid-template-areas: "info" "list";
+    }
+}
+
+@media screen and (max-width: 700px) {
+
+    .availableTestContainer {
+        min-height: calc(100vh - 6rem - 75px);
+    }
+
+    nav .buttons {
+        display: flex;
+        position: unset;
+        width: calc(100% - 10px);
+        padding-left: 5px;
+        padding-right: 5px;
+        padding-bottom: 0.75rem;
+    }
+
+    nav button {
+        flex-grow: 1;
+    }
+
+    .test {
+        height: 7rem;
+    }
+
+    .test p {
+        width: 100%;
+        text-align: center;
+    }
+    
+    .test button {
+        top: unset;
+        right: unset;
+        bottom: 1rem;
+        width: 90%;
+        left: 5%;
+    }
+
+    .question {
+        grid-template-columns: 100%;
+        grid-template-rows: 25px auto auto;
+        grid-template-areas: "info" "image" "text";
+    }
+    .noImage {
+        grid-template-rows: 25px 0 auto;
+    }
+
+    .question img {
+        width: calc(100% - 40px);
+        padding: 20px 20px 0 20px;
+    }
+
+    .profile {
+        margin: 25px auto 25px auto;
+        width: 95%;
+        grid-template-columns: auto;
+        grid-template-rows: auto auto;
+        grid-template-areas: "info" "list";
+    }
+
 }

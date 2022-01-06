@@ -15,6 +15,7 @@
 
     <!-- Internal JS -->
     <script src="js/database.js"></script>
+    <script src="js/viewController.js"></script>
     <script src="js/studentProfile.js"></script>
 
 </head>
@@ -25,22 +26,21 @@
     <img src="img/page_background.jpeg" class="background">
     <div class="backgroundOverlay"></div>
 
-    <div class="panel finishedTestsContainer">
-        <h3>Finished tests</h3>
-        <div class="testList" id="testList">
-            <div class="test">
-                <p>$(testName)</p>
-                <button class="blueButton" onclick="startTest($(testID));">View</button>
+    <div class="profile">
+        <div class="panel finishedTestsContainer">
+            <h3>Finished tests</h3>
+            <div class="testList" id="testList">
+                
             </div>
         </div>
-    </div>
-
-    <div class="panel profileBubble">
-        <h3>Profile</h3>
-        <img src="img/user.png" id="studentProfilePhoto">
-        <p class="nameText" id="studentNameLabel"></p>
-        <p class="indexText" id="studentIndexLabel"></p>
-        <button class="blueButton" onclick="goBack();">Return</button>
+        
+        <div class="panel profileInfo">
+            <h3>Profile</h3>
+            <img src="img/user.png" id="studentProfilePhoto">
+            <p class="userName" id="studentNameLabel">$(StudentName)</p>
+            <p class="userIndex" id="studentIndexLabel">$(IndexNo)</p>
+            <button class="redButton" onclick="goBack(event);">Return</button>
+        </div>
     </div>
 
 </body>

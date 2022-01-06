@@ -14,6 +14,8 @@
     
     <!-- Internal JS -->
     <script src="js/database.js"></script>
+    <script src="js/viewController.js"></script>
+    <script src="js/question.js"></script>
 </head>
 
 <body>
@@ -36,23 +38,17 @@
     <!-- Question -->
     <div class="panel question">
         <p class="number">$(QuestionNumber)</p>
-        
+        <hr class="splitter">
         <img src="img/user.png" id="questionImage">
-        <p class="text" id="questionText">Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque consequatur ipsum voluptatem, minus doloribus quo sapiente veniam esse. Rem modi velit nobis beatae culpa ratione necessitatibus magnam, voluptas nihil repellendus? Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consequatur aspernatur debitis modi minus cupiditate, quod perspiciatis veniam quidem ipsam itaque quasi illo voluptatem accusamus, reprehenderit qui. Odio impedit in sequi? Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt impedit iste numquam, rerum accusamus velit eos? Accusantium, error harum. Sunt, consequuntur aspernatur repellendus quidem sapiente tempora maxime quia culpa recusandae.</p>
+        <p class="text" id="questionText">$(QuestionText)</p>
     </div>
-    <div class="answers">
-        <div class="panel answer">
-            <p>$(AnswerText)</p>
-            <input class="input" type="radio" name="answer" value="1">
-        </div>
-        <div class="panel answer">
-            <p>$(AnswerText)</p>
-            <input class="input" type="radio" name="answer" value="1">
-        </div>
-        <div class="panel answer">
-            <p>$(AnswerText)</p>
-            <input class="input" type="radio" name="answer" value="1">
-        </div>
+    <div class="answers" id="answerList">
+        
+    </div>
+
+    <div class="questionButtons">
+        <button onclick="submit();">Next</button>
+        <button>Previous</button>
     </div>
 
 </body>

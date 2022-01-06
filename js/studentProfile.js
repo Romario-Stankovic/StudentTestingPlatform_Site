@@ -5,35 +5,34 @@ let studentLastName=  getStudentLastName(studentIndex);
 let profilePhotoPath = getStudentProfilePhoto(studentIndex);
 
 function displayInfo(){
-    nameLabel = document.getElementById("studentNameLabel");
-    indexLabel = document.getElementById("studentIndexLabel");
-    profilePhoto = document.getElementById("studentProfilePhoto");
+    let nameLabel = document.getElementById("studentNameLabel");
+    let indexLabel = document.getElementById("studentIndexLabel");
+    let profilePhoto = document.getElementById("studentProfilePhoto");
     
     nameLabel.innerText = studentName + " " + studentLastName;
     indexLabel.innerText = studentIndex;
-    profilePhoto.src = profilePhotoPath != null ? profilePhotoPath : "img/user.png";
+    profilePhoto.src = (profilePhotoPath != null ? profilePhotoPath : "img/user.png");
 }
 
 function displayTests() {
-    let testHTML = `
-    <div class="test">
-        <p>$(testName)</p>
-        <button class="blueButton" onclick="startTest($(testID));">View</button>
-    </div>
-    `;
-
-    list = document.getElementById("testList");
-    list.innerHTML = "";
+    let list = document.getElementById("testList");
     let tests = getFinishedTests();
 
+    clearContainer(list);
+
     for(i=0; i<tests.length; i++){
-        list.innerHTML += (testHTML.replace("$(testName)", tests[i].name).replace("$(testID)", tests[i].testID));
+        addFinishedTest(list, tests[i].id, tests[i].name, 0);
     }
 
 }
 
-function goBack(){
-    document.location = "studentTests.html?index=" + studentIndex;
+function viewTest(id){
+    document.location = "viewTest.html?index=" + studentIndex + "&test=" + id;
+}
+
+function goBack(e){
+    e.preventDefault();
+    document.location = "testList.html?index=" + studentIndex;
 }
 
 $(document).ready(function(){

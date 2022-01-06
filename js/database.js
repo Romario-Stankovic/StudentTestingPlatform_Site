@@ -98,7 +98,7 @@ function getStudentProfilePhoto(index){
             return students[i].imagePath;
         }
     }
-    return "null";
+    return null;
 }
 
 function getAvailableTests(){
