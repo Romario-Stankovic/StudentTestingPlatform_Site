@@ -27,12 +27,12 @@ function displayTests() {
 }
 
 function viewTest(id){
-    document.location = "viewTest.html?index=" + studentIndex + "&test=" + id;
+    document.location = "studentViewTest.html?index=" + studentIndex + "&test=" + id;
 }
 
 function goBack(e){
     e.preventDefault();
-    document.location = "testList.html?index=" + studentIndex;
+    document.location = "studentTests.html?index=" + studentIndex;
 }
 
 $(document).ready(function(){

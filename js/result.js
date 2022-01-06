@@ -3,7 +3,7 @@ let studentIndex = urlParams.get("index");
 
 function goBack(e){
     e.preventDefault();
-    document.location = "testList.html?index=" + studentIndex;
+    document.location = "studentTests.html?index=" + studentIndex;
 }
 
 $(document).ready(function(){

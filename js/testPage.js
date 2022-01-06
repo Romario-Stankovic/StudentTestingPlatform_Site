@@ -3,7 +3,7 @@ let studentIndex = urlParams.get("index");
 let studentName = getStudentName(studentIndex);
 let studentLastName=  getStudentLastName(studentIndex);
 
-function displayStudentInfo(){
+function displayProfessorInfo(){
     
     let studentBriefLabel = document.getElementById("studentBrief");
     studentBriefLabel.innerText = studentName + " " + studentLastName + " - " + studentIndex;
@@ -29,7 +29,7 @@ function logout(){
 }
 
 function startTest(id){
-    document.location = "question.html?test=" + id + "&question=0";
+    document.location = "studentQuestion.html?test=" + id + "&question=0";
 }
 
 function refreshTestList(){
@@ -37,6 +37,6 @@ function refreshTestList(){
 }
 
 $(document).ready(function(){
-    displayStudentInfo();
+    displayProfessorInfo();
     displayTests();
 });

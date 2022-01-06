@@ -235,7 +235,7 @@ nav .timer {
 
 /* Test Page */
 
-.availableTestContainer {
+.tests {
     position: relative;
     width: 95vw;
     margin: 0 auto;
@@ -243,21 +243,21 @@ nav .timer {
     min-height: calc(100vh - 3.5rem - 75px);
 }
 
-.availableTestContainer h3{
+.tests h3{
     margin: 0;
     padding-top: 20px;
     margin-bottom: 15px;
     text-align: center;
 }
 
-.availableTestContainer .refreshButton {
+.tests .refreshButton {
     position: absolute;
     bottom: 1rem;
     right: 1rem;
     width: 150px;
 }
 
-.availableTestContainer .testList {
+.tests .testList {
     padding-bottom: 75px;
 }
 
@@ -276,11 +276,15 @@ nav .timer {
     vertical-align: middle;
 }
 
-.test button {
-    position: absolute;
+.test .buttons {
+    position:absolute;
     top: 0.5rem;
     right: 0.75rem;
-    width: 150px;
+}
+
+.test .buttons button {
+    position:unset;
+    margin-left: 10px;
 }
 
 /* Question */

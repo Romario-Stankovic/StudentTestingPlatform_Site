@@ -6,7 +6,22 @@ function addActiveTest(container, testID, testName){
     let html = `
     <div class="test">
         <p>${testName}</p>
-        <button class="greenButton" onclick="startTest(${testID});">Start</button>
+        <div class="buttons">
+            <button class="greenButton" onclick="startTest(${testID});">Start</button>
+        </div>
+    </div>
+    `;
+    container.innerHTML += html;
+}
+
+function addEditableTest(container, testID, testName){
+    let html = `
+    <div class="test">
+        <p>${testName}</p>
+        <div class="buttons">
+            <button class="blueButton" onclick="startTest(${testID});">Results</button>
+            <button class="blueButton" onclick="startTest(${testID});">Edit</button>
+        </div>
     </div>
     `;
     container.innerHTML += html;
@@ -17,11 +32,14 @@ function addFinishedTest(container, testID, testName, score){
     <div class="test">
         <p>${testName}</p>
         <p>${score}%</p>
+        <div class="buttons">
         <button class="blueButton" onclick="viewTest(${testID});">View</button>
+        </div>
     </div>
     `;
     container.innerHTML += html;
 }
+
 
 function addQuestionResult(container, questionNo, image, text, isCorrect, answerHTML){
     

@@ -7,7 +7,7 @@ function studentLogin(e){
     let indexNumber = document.getElementById("indexField").value;
     
     if(getStudent(indexNumber) != false){
-        window.location = "testList.html?index=" + indexNumber;
+        window.location = "studentTests.html?index=" + indexNumber;
     }else{
         let errorMessage = document.getElementById("loginErrorMessage");
         errorMessage.style.visibility = "visible";
@@ -19,5 +19,7 @@ function professorLogin(e){
     e.preventDefault();
     let username = document.getElementById("usernameField").value;
     let password = document.getElementById("passwordField").value;
-    alert(username + " - " + password);
+    
+    window.location = "professorTests.html?name=" + username;
+
 }
