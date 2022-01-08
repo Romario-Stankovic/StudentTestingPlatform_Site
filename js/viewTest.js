@@ -6,7 +6,7 @@ function goBack() {
 }
 
 function expandContent(button) {
-    let content = button.parentElement.querySelector(".content");
+    let content = button.parentElement.parentElement.querySelector(".content");
     // Is the content expanded when we press the button?
     let expanded = (content.style.display == "block" ? true : false);
     // If it is collapse the content
@@ -24,7 +24,7 @@ function displayResult(){
     addResultAnswer(answersHTML, 1, "Answer 2", false, false, false);
     addResultAnswer(answersHTML, 2, "Answer 3", false, false, false);
     addResultAnswer(answersHTML, 3, "Answer 4", false, false, false);
-    addQuestionResult(container, 0, null, "test", true, answersHTML.innerHTML);
+    addQuestionResult(container, 0, "img/user.png", "test", true, answersHTML.innerHTML);
 }
 
 $(document).ready(function(){

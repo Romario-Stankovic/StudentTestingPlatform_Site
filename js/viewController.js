@@ -4,11 +4,9 @@ function clearContainer(container){
 
 function addActiveTest(container, testID, testName){
     let html = `
-    <div class="test">
+    <div class="listItem">
         <p>${testName}</p>
-        <div class="buttons">
-            <button class="greenButton" onclick="startTest(${testID});">Start</button>
-        </div>
+        <button class="greenButton" onclick="startTest(${testID});">Start</button>
     </div>
     `;
     container.innerHTML += html;
@@ -16,12 +14,10 @@ function addActiveTest(container, testID, testName){
 
 function addEditableTest(container, testID, testName){
     let html = `
-    <div class="test">
+    <div class="listItem">
         <p>${testName}</p>
-        <div class="buttons">
-            <button class="blueButton" onclick="startTest(${testID});">Results</button>
-            <button class="blueButton" onclick="startTest(${testID});">Edit</button>
-        </div>
+        <button class="blueButton" onclick="startTest(${testID});">Results</button>
+        <button class="blueButton" onclick="startTest(${testID});">Edit</button>
     </div>
     `;
     container.innerHTML += html;
@@ -29,23 +25,20 @@ function addEditableTest(container, testID, testName){
 
 function addFinishedTest(container, testID, testName, score){
     let html = `
-    <div class="test">
+    <div class="listItem">
         <p>${testName}</p>
-        <p>${score}%</p>
-        <div class="buttons">
+        <p class="score">${score}%</p>
         <button class="blueButton" onclick="viewTest(${testID});">View</button>
-        </div>
     </div>
     `;
     container.innerHTML += html;
 }
 
-
 function addQuestionResult(container, questionNo, image, text, isCorrect, answerHTML){
     
     let icon = isCorrect ==true ? "ant-design:check-outlined" : "ant-design:close-outlined";
     
-    let imageStatus = image == null ? "noImage" : "";
+    let imageStatus = image == null ? "questionNoImage" : "";
 
     let iconStatus = isCorrect == true ? "correctIcon" : "wrongIcon";
 
@@ -53,16 +46,17 @@ function addQuestionResult(container, questionNo, image, text, isCorrect, answer
 
     let html = `
     <div class="panel viewQuestion">
-        <span class="iconify ${iconStatus}" data-icon="${icon}"></span>
-
-        <p>Question: ${questionNo}</p>
-        <button class="blueButton" onclick="expandContent(this);">Expand</button>
+        <div class="info">
+            <span class="iconify ${iconStatus}" data-icon="${icon}"></span>
+            <p>Question: ${questionNo}</p>  
+            <button class="blueButton" onclick="expandContent(this);">Expand</button>
+        </div>
         <div class="content">
             <div class="panel question ${imageStatus}">
                 <img src="${imageUrl}">
                 <p class="text">${text}</p>
             </div>
-            <div class="answers">
+            <div>
                 ${answerHTML}
             </div>
         </div>
@@ -105,7 +99,6 @@ function addResultAnswer(container, answerID, answerText, multichoice, isCorrect
         <span class="iconify ${iconStatus}" data-icon="${icon}"></span>
         <p>${answerText}</p>
         <input class="input" id="${answerID}" type="${type}" name="answer" disabled ${checked}>
-        <label for="${answerID}"></label>
     </div>
     `;
 

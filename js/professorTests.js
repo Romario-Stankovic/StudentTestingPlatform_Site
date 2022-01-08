@@ -4,7 +4,9 @@ let professorName = urlParams.get("name");
 function displayProfessorInfo(){
     
     let professorBriefLabel = document.getElementById("professorBrief");
-    professorBriefLabel.innerText = professorName;
+    if(professorName != null){
+        professorBriefLabel.innerText = professorName;
+    }
 }
 
 function displayTests() {
