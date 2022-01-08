@@ -24,7 +24,7 @@ function displayResult(){
     addResultAnswer(answersHTML, 1, "Answer 2", false, false, false);
     addResultAnswer(answersHTML, 2, "Answer 3", false, false, false);
     addResultAnswer(answersHTML, 3, "Answer 4", false, false, false);
-    addQuestionResult(container, 0, null, "test", false, answersHTML.innerHTML);
+    addQuestionResult(container, 0, null, "test", true, answersHTML.innerHTML);
 }
 
 $(document).ready(function(){

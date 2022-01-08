@@ -23,18 +23,16 @@
     
     <!-- Background -->
     <img src="img/page_background.jpeg" class="background">
-    <div class="backgroundOverlay"></div>
 
     <nav class="panel">
         <div class="info">
-            <span class="iconify" data-icon = "ant-design:user-outlined"></span>
+            <span class="iconify" data-icon="ant-design:user-outlined"></span>
             <p id="studentBrief">$(StudentInfo)</p>
         </div>
-
-        <div class="buttons">
-            <button class="blueButton" onclick="showProfile();">My Profile</button>
-            <button class="redButton" onclick="logout();">Logout</button>
-        </div>
+    
+        <button class="blueButton" onclick="showProfile();">My Profile</button>
+        <button class="redButton" onclick="logout();">Logout</button>
+        
     </nav>
 
     <div class="panel tests">
@@ -44,7 +42,7 @@
             
         </div>
         
-        <button class="blueButton refreshButton" onclick="refreshTestList();">Refresh</button>
+        <button class="blueButton listButton" onclick="refreshTestList();">Refresh</button>
     </div>
 
 </body>

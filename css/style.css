@@ -7,41 +7,32 @@ body {
 }
 
 .background {
-    min-height: 100%;
-    width: 100%;
-    min-width: 700px;
     position:fixed;
     top: 0;
     left: 0;
     z-index: -100;
-}
-
-.backgroundOverlay{
-    background-color:rgba(0,0,0, 0.5);
-    width: 200%;
-    height: 200%;
-    position:fixed;
-    top: 0;
-    left: 0;
-    z-index: -99;
+    width: 100%;
+    min-height: 100%;
+    min-width: 700px;
+    filter:brightness(50%);
 }
 
 button {
-    background-color: #ffffff;
-    color: #000000;
-    border-radius: 7px;
     width: 150px;
     height: 32px;
+    background-color: #ffffff;
+    color: #000000;
     border: none;
+    border-radius: 7px;
     cursor: pointer;
 }
 
 button:hover {
-    background-color: #f2f2f2;
+    background-color: #e0e0e0;
 }
 
 button:active {
-    background-color: #ffffff;
+    background-color: #c7c7c7;
 }
 
 .redButton {
@@ -90,43 +81,35 @@ button:active {
 }
 
 .inputField {
-    width: 150px;
     position: relative;
+    width: 150px;
     height: 20px;
 }
 
-.inputField input{
+.inputField input {
+    width: 100%;
+    height: 100%;
     border: none;
     border-bottom: 2px solid #9b9b9b;
-    width: 100%;
 }
 
 .inputField label {
     position: absolute;
-    pointer-events: none;
-    color:#9b9b9b;
     left: 2px;
-     bottom: 2px;
+    bottom: 3.5px;
+    width: 100%;
+    color:#9b9b9b;
     font-size: 1rem;
     font-style: italic;
+    pointer-events: none;
     transition-property: bottom font-size;
-    transition-duration: 0.15s;
+    transition-duration: 0.135s;
     transition-timing-function: ease-in-out;
-    width: 100%;
-}
-
-.inputField .errorMessage {
-    width: 100%;
-    font-size: 8pt;
-    color:red;
-    margin: 0 auto;
-    margin-top: 5px;
-    visibility: hidden;
 }
 
 .inputField input:focus {
-    outline: none;
     border-color: #d71920;
+    outline: none;
 }
 
 .inputField input:valid {
@@ -134,34 +117,35 @@ button:active {
 }
 
 .inputField:focus-within label{
-    bottom: 20px;
+    bottom: 100%;
     font-size: 0.8rem;
 }
 
 .inputField input:valid + label{
-    bottom: 20px;
+    bottom: 100%;
     font-size: 0.8rem;
 }
 
 .panel {
     background-color: #ffffff;
-    border-radius: 7px;
+    border-radius: 10px;
     box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3);
 }
 
 hr {
     height: 2px;
-    border-radius: 2px;
     background-color: #9b9b9b;
     border: none;
+    border-radius: 2px;
 }
 
 nav {
+    display: flex;
     width: 95vw;
-    min-height: 3.5rem;
     height: fit-content;
     margin: 25px auto;
-    position: relative;
+    padding-left: 1rem;
+    padding-right: 1rem;
 }
 
 nav .iconify {
@@ -173,25 +157,19 @@ nav .iconify {
 
 nav p {
     display: inline-block;
-    font-weight: 600;
+    font-weight: bold;
 }
 
-nav button {
-    width: 150px;
-    margin: 0px 5px;
-}
 
 nav .info {
     display: inline-block;
     height: 100%;
-    margin-left: 10px;
+    flex-grow: 1;
 }
 
-nav .buttons {
-    display: inline-block;
-    position: absolute;
-    right: 1rem;
-    top: 0.75rem;
+nav button {
+    margin: auto 0;
+    vertical-align: middle;
 }
 
 nav .timer {
@@ -250,7 +228,7 @@ nav .timer {
     text-align: center;
 }
 
-.tests .refreshButton {
+.tests .listButton {
     position: absolute;
     bottom: 1rem;
     right: 1rem;
@@ -262,29 +240,29 @@ nav .timer {
 }
 
 .test {
+    display: flex;
     width: 95%;
     background-color: #F2F2F2;
     margin: 10px auto;
     border-radius: 7px;
-    height: 3rem;
-    position:relative;
 }
 
 .test p {
     display: inline-block;
     margin-left: 1rem;
     vertical-align: middle;
+    flex-grow: 1;
 }
 
 .test .buttons {
-    position:absolute;
-    top: 0.5rem;
-    right: 0.75rem;
+    display: inline-block;
+    margin-top: 0.75rem;
+    margin-right: 1rem;
+    min-width: fit-content;
 }
 
 .test .buttons button {
-    position:unset;
-    margin-left: 10px;
+    margin-left: 5px;
 }
 
 /* Question */
@@ -569,21 +547,31 @@ nav .timer {
     color: #d71920;
 }
 
+/* EditTest */
+
+.testDetails {
+    width: 95%;
+    margin: 0 auto;
+}
+
+.testDetails h3{
+    text-align: center;
+    padding-top: 20px;
+    margin-bottom: 15px;
+}
+
+.testDetails .inputField {
+    margin-bottom: 25px;
+    width: 300px;
+}
+
 /* Media */
 
-@media screen and (max-width: 1000px){
-    .profile {
-        margin: 25px auto 25px auto;
-        width: 95%;
-        grid-template-columns: auto;
-        grid-template-rows: auto auto;
-        grid-template-areas: "info" "list";
-    }
-}
+
 
 @media screen and (max-width: 700px) {
 
-    .availableTestContainer {
+    .tests {
         min-height: calc(100vh - 6rem - 75px);
     }
 
@@ -601,7 +589,7 @@ nav .timer {
     }
 
     .test {
-        height: 7rem;
+        display: block;
     }
 
     .test p {
@@ -609,12 +597,16 @@ nav .timer {
         text-align: center;
     }
     
-    .test button {
-        top: unset;
-        right: unset;
-        bottom: 1rem;
+    .test .buttons {
+        display: block;
         width: 90%;
-        left: 5%;
+        margin: 0 auto;
+        padding-bottom: 10px;
+    }
+
+    .test .buttons button {
+        width: 100%;
+        margin-bottom: 0.75rem;
     }
 
     .question {
@@ -633,7 +625,7 @@ nav .timer {
 
     .profile {
         margin: 25px auto 25px auto;
-        width: 95%;
+        width: 95vw;
         grid-template-columns: auto;
         grid-template-rows: auto auto;
         grid-template-areas: "info" "list";

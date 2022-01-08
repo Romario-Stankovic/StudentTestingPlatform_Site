@@ -1,0 +1,73 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tests</title>
+
+    <!-- Internal CSS -->
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    
+    <!-- External JS -->
+    <script src="https://code.iconify.design/2/2.1.0/iconify.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    
+    <!-- Internal JS -->
+    <script src="js/database.js"></script>
+    <script src="js/viewController.js"></script>
+    
+</head>
+
+<body>
+    
+    <!-- Background -->
+    <img src="img/page_background.jpeg" class="background">
+
+    <nav class="panel">
+        <div class="info">
+            <span class="iconify" data-icon = "ant-design:user-outlined"></span>
+            <p id="testBrief">${Action}</p>
+        </div>
+
+        <div class="buttons">
+            <button class="redButton" onclick="logout();">Logout</button>
+        </div>
+    </nav>
+
+    <div class="panel testDetails">
+        <h3>Test Details</h3>
+        
+        <div class="inputField">
+            <input type="text" autocomplete="off" required id="indexField">
+            <label>Test Name</label>
+            <p class="errorMessage" id="loginErrorMessage"></p>
+        </div>
+
+        <div class="inputField">
+            <input type="number" autocomplete="off" required id="indexField">
+            <label>Duration (minutes)</label>
+            <p class="errorMessage" id="loginErrorMessage"></p>
+        </div>
+
+        <div class="inputField">
+            <input type="number" autocomplete="off" required id="indexField">
+            <label>Number of Questions: </label>
+            <p class="errorMessage" id="loginErrorMessage"></p>
+        </div>
+
+        <div class="inputField">
+            <input type="datetime" autocomplete="off" required id="indexField">
+            <label>Start At: </label>
+            <p class="errorMessage" id="loginErrorMessage"></p>
+        </div>
+
+        <div class="inputField">
+            <input type="datetime" autocomplete="off" required id="indexField">
+            <label>End At: </label>
+            <p class="errorMessage" id="loginErrorMessage"></p>
+        </div>
+
+    </div>
+
+</body>
+</html>
