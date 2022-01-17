@@ -1,25 +1,25 @@
-let urlParams = new URLSearchParams(window.location.search);
-let loginType = urlParams.get("type");
+function studentLogin(event){
 
-function studentLogin(e){
-    e.preventDefault();
-    
+    event.preventDefault();
+
     let indexNumber = document.getElementById("indexField").value;
-    
-    if(getStudent(indexNumber) != false){
-        window.location = "studentTests.html?index=" + indexNumber;
-    }else{
-        let errorMessage = document.getElementById("loginErrorMessage");
-        errorMessage.style.visibility = "visible";
-        errorMessage.innerText = "There is no student with the given index number!";
-    }
+    getStudent(indexNumber);
 }
 
-function professorLogin(e){
-    e.preventDefault();
-    let username = document.getElementById("usernameField").value;
-    let password = document.getElementById("passwordField").value;
-    
-    window.location = "professorTests.html?name=" + username;
-
+function getStudent(index){
+    $.ajax({
+        url: "http://localhost:4000/auth/login/student",
+        method: "POST",
+        dataType: "json",
+        data: {
+            indexNumber: index
+        },
+        success: function(data){
+            console.log(data);
+        }
+    })
 }
+
+$(document).ready(() => {
+    
+});
