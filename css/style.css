@@ -229,6 +229,14 @@ nav button {
     margin-bottom: 1.5rem;
 }
 
+.loginForm .warningText {
+    width: 75%;
+    margin: 0 auto 1rem auto;
+    color: #d71920;
+    text-align: center;
+    font-size: 0.8rem;
+}
+
 /* Test Page */
 
 .availableTests {
