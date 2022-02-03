@@ -1,0 +1,81 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tests</title>
+
+    <!-- Internal CSS -->
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    
+    <!-- External JS -->
+    <script src="https://code.iconify.design/2/2.1.0/iconify.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    
+    <!-- Internal JS -->
+    <script src="js/main.js"></script>
+    
+</head>
+
+<body onload="professorMainPageLoaded();">
+    
+    <!-- Background -->
+    <img src="img/page_background.jpeg" class="background">
+
+    <nav class="panel">
+        <div class="info">
+            <span class="iconify" data-icon="ant-design:user-outlined"></span>
+            <p id="professorBrief">${ProfessorInfo}</p>
+        </div>
+    
+        <button class="redButton" onclick="professorLogout();">Logout</button>
+    </nav>
+
+    <div class="panel professorTests">
+        <h3>Your tests</h3>
+        
+        <div class="list" id="testList">
+            
+        </div>
+        
+        <button class="blueButton listButton" onclick="showCreateTestDialog();">New Test</button>
+    </div>
+
+    <div class="testOverlay" id="testOverlay">
+        <div class="testOverlayBackground" onclick="hideCreateTestDialog();"></div>
+        <div class="panel testForm">
+            <h3>Create new test</h3>
+
+            <div class="inputField">
+                <input type="text" id="testNameField" autocomplete="off" required>
+                <label for="indexField">Test Name</label>
+            </div>
+
+            <div class="inputField">
+                <input type="text" id="testDurationField" autocomplete="off" required>
+                <label for="indexField">Duration (minutes)</label>
+            </div>
+
+            <div class="inputField">
+                <input type="text" id="questionCountField" autocomplete="off" required>
+                <label for="indexField">Number of questions</label>
+            </div>
+
+            <div class="inputField forceSelected">
+                <input type="datetime-local" id="startAtField" autocomplete="off" required>
+                <label for="indexField">Start at:</label>
+            </div>
+
+            <div class="inputField forceSelected">
+                <input type="datetime-local" id="endAtField" autocomplete="off" required>
+                <label for="indexField">End at:</label>
+            </div>
+
+            <button class="blueButton" id="questionButton">Questions</button>
+            <button class="blueButton" id="actionButton" onclick="createTest();">Create</button>
+
+        </div>
+    </div>
+
+</body>
+</html>

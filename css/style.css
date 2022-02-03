@@ -126,6 +126,11 @@ button:active {
     font-size: 0.8rem;
 }
 
+.forceSelected label {
+    bottom: 100%;
+    font-size: 0.8rem;
+}
+
 .panel {
     background-color: #ffffff;
     border-radius: 10px;
@@ -207,7 +212,6 @@ nav button {
     transform: translate(-50%, -50%);
     width: 80vw;
     max-width: 400px;
-    background-color: #ffffff;
 }
 
 .loginForm .logo{
@@ -541,6 +545,47 @@ nav button {
 
 .professorTests .listButton {
     margin: 1rem 0 1rem auto;
+}
+
+.testOverlay {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.testOverlayBackground {
+    width: 200%;
+    height: 200%;
+    background-color: rgba(0, 0, 0, 0.3);
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+.testForm {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80vw;
+    max-width: 400px;
+}
+
+.testForm h3 {
+    text-align: center;
+}
+
+.testForm .inputField {
+    margin: 27px auto;
+    width: 60%;
+}
+
+.testForm button {
+    display: block;
+    width: 80%;
+    margin: 0 auto 1rem auto;
 }
 
 /* EditTest */

@@ -13,12 +13,10 @@
     <script src="https://code.iconify.design/2/2.1.0/iconify.min.js"></script>
     
     <!-- Internal JS -->
-    <script src="js/database.js"></script>
-    <script src="js/viewController.js"></script>
-    <script src="js/question.js"></script>
+    <script src="js/main.js"></script>
 </head>
 
-<body>
+<body onload="questionPageLoaded();">
 
     <!-- Background -->
     <img src="img/page_background.jpeg" class="background">
@@ -26,17 +24,17 @@
     <!-- Navigation bar -->
     <nav class="panel">
         <div class="info">
-            <p>$(TestName)</p>
+            <p id="questionTestNameField">$(TestName)</p>
         </div>
         <div class="timer">
-            <p>$(Time)</p>
+            <p id="questionTimer">$(Time)</p>
             <span class="iconify" data-icon="ant-design:clock-circle-outlined"></span>
         </div>
     </nav>
 
     <!-- Question -->
-    <div class="panel question">
-        <p class="number">${QuestionNumber}</p>
+    <div class="panel question" id="questionPanel">
+        <p class="number" id="questionNumber">${QuestionNumber}</p>
         <hr>
         <img src="img/user.png" id="questionImage">
         <p class="text" id="questionText">${QuestionText}</p>
@@ -46,8 +44,8 @@
     </div>
 
     <div class="questionNavigation">
-        <button onclick="submit();">Next</button>
-        <button>Previous</button>
+        <button onclick="nextQuestion();" id="nextQuestionButton">Next</button>
+        <button onclick="previousQuestion();">Previous</button>
     </div>
 
 </body>

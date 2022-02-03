@@ -14,11 +14,11 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
     <!-- Internal JS -->
-    <script src="js/studentProfile.js"></script>
+    <script src="js/main.js"></script>
 
 </head>
 
-<body>
+<body onload="studentProfilePageLoaded();">
 
     <!-- Background -->
     <img src="img/page_background.jpeg" class="background">
@@ -36,7 +36,7 @@
             <img src="img/user.png" id="studentProfilePhoto">
             <p id="studentNameLabel" style="font-weight: bold;">${StudentName}</p>
             <p id="studentIndexLabel" style="font-style: italic;">${IndexNo}</p>
-            <button class="redButton" onclick="goToTests();">Return</button>
+            <button class="redButton" onclick="goToMain(event);">Return</button>
         </div>
     </div>
 

@@ -14,30 +14,29 @@
     <script src="https://code.iconify.design/2/2.1.0/iconify.min.js"></script>
 
     <!-- Internal JS -->
-    <script src="js/result.js"></script>
-    <script src="js/database.js"></script>
+    <script src="js/main.js"></script>
 </head>
 
-<body>
+<body onload="resultPageLoaded();">
 
     <!-- Background -->
     <img src="img/page_background.jpeg" class="background">
 
     <!-- Login Form -->
-    <form class="panel resultForm">
+    <div class="panel resultForm">
 
         <h2>Result:</h2>
-        <span class="iconify pass" data-icon="ant-design:check-circle-outlined"></span>
-        <span class="iconify fail" data-icon="ant-design:close-circle-outlined"></span>
+        <span class="iconify pass" data-icon="ant-design:check-circle-outlined" id="passedIcon"></span>
+        <span class="iconify fail" data-icon="ant-design:close-circle-outlined" id="failedIcon"></span>
 
-        <p style="font-weight: bold;">${MessageText}</p>
-        <p>${StatusText}</p>
+        <p id="messageText" style="font-weight: bold;">${MessageText}</p>
+        <p id="statusText">${StatusText}</p>
         <br>
-        <p>${ScoreText}</p>
+        <p id="scoreText">${ScoreText}</p>
 
         <!-- Button -->
-        <button class="redButton" onclick="goBack(event);">Return</button>
-    </form>
+        <button class="redButton" onclick="goToMain(event);">Return</button>
+    </div>
 
 </body>
 

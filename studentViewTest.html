@@ -14,13 +14,11 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
     <!-- Internal JS -->
-    <script src="js/database.js"></script>
-    <script src="js/viewController.js"></script>
-    <script src="js/viewTest.js"></script>
+    <script src="js/main.js"></script>
 
 </head>
 
-<body>
+<body onload="viewTestPageLoaded();">
 
     <!-- Background -->
     <img src="img/page_background.jpeg" class="background">
@@ -32,7 +30,7 @@
             <p id="testBrief">${TestName}</p>
         </div>
 
-        <button class="redButton" onclick="goBack();">Return</button>
+        <button class="redButton" onclick="goToStudentProfile(event);">Return</button>
     </nav>
 
     <div id="questionList">
