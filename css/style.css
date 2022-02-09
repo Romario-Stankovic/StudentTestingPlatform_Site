@@ -507,22 +507,6 @@ nav button {
     width: 95%;
 }
 
-.viewQuestion .correctAnswer {
-    border: 2px solid #3acc07;
-}
-
-.viewQuestion .wrongAnswer {
-    border: 2px solid #d71920;
-}
-
-.correctIcon {
-    color: #3acc07;
-}
-
-.wrongIcon {
-    color: #d71920;
-}
-
 /* Professor Tests */
 
 .professorTests {
@@ -588,22 +572,32 @@ nav button {
     margin: 0 auto 1rem auto;
 }
 
-/* EditTest */
+/* Test Students */
 
-.testDetails {
-    width: 95%;
-    margin: 0 auto;
-}
-
-.testDetails h3{
-    text-align: center;
-    padding-top: 20px;
-    margin-bottom: 15px;
-}
-
-.testDetails .inputField {
+.studentList {
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    width: 95vw;
+    min-height: calc(100vh - 3.5rem - 75px);
     margin: 0 auto 25px auto;
-    width: 300px;
+    padding: 0 1rem;
+}
+
+.studentList h3 {
+    text-align: center;
+}
+
+.studentList .list {
+    flex-grow: 1;
+}
+
+.studentList .listItem .score {
+    text-align: right;
+}
+
+.studentList .listButton {
+    margin: 1rem 0 1rem auto;
 }
 
 /* Media */
@@ -651,6 +645,11 @@ nav button {
     }
 
     .finishedTests .listItem .score{
+        text-align: center;
+        margin-top: 1rem;
+    }
+
+    .studentList .listItem .score {
         text-align: center;
         margin-top: 1rem;
     }

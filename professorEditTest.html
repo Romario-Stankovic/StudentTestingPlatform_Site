@@ -26,46 +26,11 @@
     <nav class="panel">
         <div class="info">
             <span class="iconify" data-icon = "ant-design:user-outlined"></span>
-            <p id="testBrief">${Action}</p>
+            <p id="testBrief">${TestName}</p>
         </div>
 
         <button class="redButton" onclick="logout();">Return</button>
     </nav>
-
-    <div class="panel testDetails">
-        <h3>Test Details</h3>
-        
-        <div class="inputField">
-            <input type="text" autocomplete="off" required id="indexField">
-            <label>Test Name</label>
-            <p class="errorMessage" id="loginErrorMessage"></p>
-        </div>
-
-        <div class="inputField">
-            <input type="number" autocomplete="off" required id="indexField">
-            <label>Duration (minutes)</label>
-            <p class="errorMessage" id="loginErrorMessage"></p>
-        </div>
-
-        <div class="inputField">
-            <input type="number" autocomplete="off" required id="indexField">
-            <label>Number of Questions: </label>
-            <p class="errorMessage" id="loginErrorMessage"></p>
-        </div>
-
-        <div class="inputField">
-            <input type="datetime" autocomplete="off" required id="indexField">
-            <label>Start At: </label>
-            <p class="errorMessage" id="loginErrorMessage"></p>
-        </div>
-
-        <div class="inputField">
-            <input type="datetime" autocomplete="off" required id="indexField">
-            <label>End At: </label>
-            <p class="errorMessage" id="loginErrorMessage"></p>
-        </div>
-
-    </div>
 
 </body>
 </html>

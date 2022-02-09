@@ -13,10 +13,11 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     
     <!-- Internal JS -->
-    <script src="js/main.js"></script>
+    <script src="js/core.js"></script>
+    <script src="js/studentMain.js"></script>
 </head>
 
-<body onload="studentMainPageLoaded();">
+<body>
     
     <!-- Background -->
     <img src="img/page_background.jpeg" class="background">
@@ -28,7 +29,7 @@
         </div>
     
         <button class="blueButton" onclick="goToStudentProfile(event);">My Profile</button>
-        <button class="redButton" onclick="studentLogout();">Logout</button>
+        <button class="redButton" onclick="logout();">Logout</button>
         
     </nav>
 
@@ -39,7 +40,7 @@
             
         </div>
         
-        <button class="blueButton listButton" onclick="displayActiveTests();">Refresh</button>
+        <button class="blueButton listButton" onclick="refreshActiveTests();">Refresh</button>
     </div>
 
 </body>

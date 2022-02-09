@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student Profile</title>
+    <title>View Work</title>
 
     <!-- Internal CSS -->
     <link rel="stylesheet" type="text/css" href="css/style.css">
@@ -15,7 +15,7 @@
 
     <!-- Internal JS -->
     <script src="js/core.js"></script>
-    <script src="js/studentProfile.js"></script>
+    <script src="js/viewWork.js"></script>
 
 </head>
 
@@ -24,21 +24,18 @@
     <!-- Background -->
     <img src="img/page_background.jpeg" class="background">
 
-    <div class="profileGrid">
-        <div class="panel finishedTests">
-            <h3>Finished tests</h3>
-            <div class="list" id="testList">
-                
-            </div>
+    <!-- Navigation -->
+    <nav class="panel">
+        <div class="info">
+            <span class="iconify" data-icon = "ant-design:file-text-outlined"></span>
+            <p id="testBrief">${TestName}</p>
         </div>
+
+        <button class="redButton" onclick="goBack(event);">Return</button>
+    </nav>
+
+    <div id="questionList">
         
-        <div class="panel profileInfo">
-            <h3>Profile</h3>
-            <img src="img/user.png" id="studentProfilePhoto">
-            <p id="studentNameLabel" style="font-weight: bold;">${StudentName}</p>
-            <p id="studentIndexLabel" style="font-style: italic;">${IndexNo}</p>
-            <button class="redButton" onclick="goToStudentMain(event);">Return</button>
-        </div>
     </div>
 
 </body>

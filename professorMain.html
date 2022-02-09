@@ -13,11 +13,12 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     
     <!-- Internal JS -->
-    <script src="js/main.js"></script>
+    <script src="js/core.js"></script>
+    <script src="js/professorMain.js"></script>
     
 </head>
 
-<body onload="professorMainPageLoaded();">
+<body>
     
     <!-- Background -->
     <img src="img/page_background.jpeg" class="background">
@@ -28,7 +29,7 @@
             <p id="professorBrief">${ProfessorInfo}</p>
         </div>
     
-        <button class="redButton" onclick="professorLogout();">Logout</button>
+        <button class="redButton" onclick="logout();">Logout</button>
     </nav>
 
     <div class="panel professorTests">
@@ -38,13 +39,13 @@
             
         </div>
         
-        <button class="blueButton listButton" onclick="showCreateTestDialog();">New Test</button>
+        <button class="blueButton listButton" onclick="showTestDialog(null);">New Test</button>
     </div>
 
     <div class="testOverlay" id="testOverlay">
-        <div class="testOverlayBackground" onclick="hideCreateTestDialog();"></div>
+        <div class="testOverlayBackground" onclick="hideTestDialog();"></div>
         <div class="panel testForm">
-            <h3>Create new test</h3>
+            <h3 id="testOverlayTitle"></h3>
 
             <div class="inputField">
                 <input type="text" id="testNameField" autocomplete="off" required>
@@ -72,7 +73,7 @@
             </div>
 
             <button class="blueButton" id="questionButton">Questions</button>
-            <button class="blueButton" id="actionButton" onclick="createTest();">Create</button>
+            <button class="blueButton" id="actionButton">Create</button>
 
         </div>
     </div>

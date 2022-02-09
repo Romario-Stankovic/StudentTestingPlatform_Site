@@ -14,11 +14,12 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
     <!-- Internal JS -->
-    <script src="js/main.js"></script>
+    <script src="js/core.js"></script>
+    <script src="js/professorResults.js"></script>
 
 </head>
 
-<body onload="viewTestPageLoaded();">
+<body>
 
     <!-- Background -->
     <img src="img/page_background.jpeg" class="background">
@@ -30,11 +31,17 @@
             <p id="testBrief">${TestName}</p>
         </div>
 
-        <button class="redButton" onclick="goToStudentProfile(event);">Return</button>
+        <button class="redButton" onclick="goToProfessorMain(event);">Return</button>
     </nav>
 
-    <div id="questionList">
+    <div class="panel studentList">
+        <h3>Students</h3>
         
+        <div class="list" id="studentList">
+            
+        </div>
+
+        <button class="blueButton listButton" onclick="refreshResults();">Refresh</button>
     </div>
 
 </body>

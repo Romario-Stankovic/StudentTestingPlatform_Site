@@ -14,10 +14,11 @@
     <script src="https://code.iconify.design/2/2.1.0/iconify.min.js"></script>
 
     <!-- Internal JS -->
-    <script src="js/main.js"></script>
+    <script src="js/core.js"></script>
+    <script src="js/studentResult.js"></script>
 </head>
 
-<body onload="resultPageLoaded();">
+<body>
 
     <!-- Background -->
     <img src="img/page_background.jpeg" class="background">
@@ -26,8 +27,7 @@
     <div class="panel resultForm">
 
         <h2>Result:</h2>
-        <span class="iconify pass" data-icon="ant-design:check-circle-outlined" id="passedIcon"></span>
-        <span class="iconify fail" data-icon="ant-design:close-circle-outlined" id="failedIcon"></span>
+        <span class="iconify" data-icon="" id="resultIcon"></span>
 
         <p id="messageText" style="font-weight: bold;">${MessageText}</p>
         <p id="statusText">${StatusText}</p>
@@ -35,7 +35,7 @@
         <p id="scoreText">${ScoreText}</p>
 
         <!-- Button -->
-        <button class="redButton" onclick="goToMain(event);">Return</button>
+        <button class="redButton" onclick="goToStudentMain(event);">Return</button>
     </div>
 
 </body>
