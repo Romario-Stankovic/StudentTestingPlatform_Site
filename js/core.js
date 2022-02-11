@@ -125,10 +125,10 @@ class APIController {
         })
     }
 
-    static getWork(workId){
+    static getWork(by, id){
         return new Promise(resolve => {
             $.ajax({
-                url: apiUrl + "api/work/?id=" + workId,
+                url: apiUrl + "api/work/?by=" + by + "&id=" + id,
                 method: "GET",
                 headers: {
                     "Content-Type": "application/json",
@@ -142,10 +142,10 @@ class APIController {
         })
     }
 
-    static getFinishedWorks(studentId){
+    static getWorkQuestions(workId){
         return new Promise(resolve => {
             $.ajax({
-                url: apiUrl + "api/work/finished/?studentId=" + studentId,
+                url: apiUrl + "api/work/questions?id=" + workId,
                 method: "GET",
                 headers: {
                     "Content-Type": "application/json",
@@ -159,15 +159,16 @@ class APIController {
         })
     }
 
-    static getFinishedWorkQuestions(workId){
+    static updateWorkAnswers(data){
         return new Promise(resolve => {
             $.ajax({
-                url: apiUrl + "api/work/question/all/?id=" + workId,
-                method: "GET",
+                url: apiUrl + "api/work/question/",
+                method: "PATCH",
                 headers: {
                     "Content-Type": "application/json",
                     "Authorization": "Bearer " + localStorage.getItem("token")
-                }
+                },
+                data: JSON.stringify(data)
             }).done(data => {
                 resolve(data);
             }).catch(error => {
@@ -176,26 +177,10 @@ class APIController {
         })
     }
 
-    static getProfessorTests(id) {
+    static getTest(by, id){
         return new Promise(resolve => {
             $.ajax({
-                url: apiUrl + "api/test/professor" + "?id=" + id,
-                method: "GET",
-                headers: {
-                    "Authorization": "Bearer " + localStorage.getItem("token")
-                }
-            }).done(data => {
-                resolve(data);
-            }).catch(error => {
-                resolve(error.responseJSON);
-            })
-        })
-    }
-
-    static getTest(id){
-        return new Promise(resolve => {
-            $.ajax({
-                url: apiUrl + "api/test/" + "?id=" + id,
+                url: apiUrl + "api/test/?by=" + by + "&id=" + id,
                 method: "GET",
                 headers: {
                     "Authorization": "Bearer " + localStorage.getItem("token")
@@ -262,16 +247,15 @@ class APIController {
         })
     }
 
-    static updateAnswers(data){
+    static getTestQuestions(testId){
         return new Promise(resolve => {
             $.ajax({
-                url: apiUrl + "api/work/question/",
-                method: "PATCH",
+                url: apiUrl + "api/test/questions/?id=" + testId,
+                method: "GET",
                 headers: {
                     "Content-Type": "application/json",
                     "Authorization": "Bearer " + localStorage.getItem("token")
-                },
-                data: JSON.stringify(data)
+                }
             }).done(data => {
                 resolve(data);
             }).catch(error => {
@@ -280,15 +264,16 @@ class APIController {
         })
     }
 
-    static getStudentResults(testId){
+    static updateTestQuestions(data){
         return new Promise(resolve => {
             $.ajax({
-                url: apiUrl + "api/work/test/?testId=" + testId,
-                method: "GET",
+                url: apiUrl + "api/test/questions",
+                method: "PATCH",
                 headers: {
                     "Content-Type": "application/json",
                     "Authorization": "Bearer " + localStorage.getItem("token")
-                }
+                },
+                data: JSON.stringify(data)
             }).done(data => {
                 resolve(data);
             }).catch(error => {
@@ -345,7 +330,7 @@ function addAnswer(container, answerID, answerText, multichoice, isChecked){
     let html = `
     <div class="panel answer">
         <p>${answerText}</p>
-        <input class="input" id="${answerID}" type="${type}" name="answer" ${checked}>
+        <input id="${answerID}" type="${type}" name="answer" ${checked}>
         <label for="${answerID}"></label>
     </div>
     `;
@@ -386,7 +371,7 @@ function addFinishedQuestion(container, questionNo, image, text, questionState, 
     let imageUrl = image != null ? apiPhotoUrl + image : "img/noquestionimage.png";
 
     let html = `
-    <div class="panel viewQuestion">
+    <div class="panel finishedQuestion">
         <div class="info">
             <span class="iconify" data-icon="${icon}" style="color: ${color}"></span>
             <p>Question: ${questionNo}</p>  
@@ -422,7 +407,7 @@ function addFinishedAnswer(container, questionNo, answerText, multichoice, isCor
     <div class="panel answer" style="border: 2px solid ${color}">
         <span class="iconify" data-icon="${icon}" style="color: ${color}"></span>
         <p>${answerText}</p>
-        <input class="input" type="${type}" name="answer_${questionNo}" disabled ${checked}>
+        <input type="${type}" name="answer_${questionNo}" disabled ${checked}>
     </div>
     `;
 
@@ -434,7 +419,7 @@ function addEditableTest(container, testID, testName) {
     <div class="listItem">
         <p>${testName}</p>
         <button class="blueButton" onclick="viewResults('${testID}', '${testName}');">Results</button>
-        <button class="blueButton" onclick="showTestDialog('${testID}');">Edit</button>
+        <button class="blueButton" onclick="showTestDialog('${testID}', '${testName}');">Edit</button>
         <button class="redButton" onclick="deleteTest('${testID}');">Delete</button>
     </div>
     `;
@@ -449,5 +434,50 @@ function addStudentResult(container, workId, testName, studentIndex, score){
         <button class="blueButton" onclick="viewWork('${workId}', '${testName}');">View</button>
     </div>
     `;
+    container.innerHTML += html;
+}
+
+function addEditableQuestion(container, questionIndex, image, text, editableAnswerHTML){
+
+    let imageStatus = image == null ? "questionNoImage" : "";
+
+    let imageUrl = image != null ? apiPhotoUrl + image : "img/noquestionimage.png";
+
+    let html = `
+    <div class="panel editableQuestion" id="question_${questionIndex}">
+        <div class="info">
+            <p>Question: ${questionIndex + 1}</p>
+            <button class="redButton" onclick="deleteQuestion(${questionIndex})">Delete</button>
+        </div>
+        <div>
+            <div class="panel question ${imageStatus}">
+                <img src="${imageUrl}">
+                <textarea class="text" oninput="resizeTextArea(this); updateQustionText(${questionIndex}, this)">${text}</textarea>
+            </div>
+            <div>
+                ${editableAnswerHTML}
+                <button class="blueButton addAnswerButton" onclick="addAnswer(event, '${questionIndex}');">Add Answer</button>
+            </div>
+        </div>
+
+    </div>
+    `;
+
+    container.innerHTML += html;
+
+}
+
+function addEditableAnswer(container, questionIndex, answerIndex, answerText, isCorrect){
+
+    let checked = isCorrect == true ? "checked" : "";
+
+    let html = `
+    <div class="panel answer">
+        <textarea oninput="resizeTextArea(this); updateAnswerText('${questionIndex}', '${answerIndex}', this);">${answerText}</textarea>
+        <input type="checkbox" name="answer_${questionIndex}" ${checked} onclick="updateAnswerCheckbox('${questionIndex}', '${answerIndex}', this)">
+        <button class="redButton" onclick="deleteAnswer('${questionIndex}','${answerIndex}')"><span class="iconify" data-icon="ant-design:delete-outlined"></span></button>
+    </div>
+    `;
+
     container.innerHTML += html;
 }

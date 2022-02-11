@@ -5,7 +5,7 @@ $(async function(){
 async function displayResult(){
     let workInfo = JSON.parse(sessionStorage.getItem("workInfo"));
 
-    let work = await apiHandler(APIController.getWork, workInfo.workId);
+    let work = await apiHandler(APIController.getWork, "default", workInfo.workId);
 
     let points = work.points;
 

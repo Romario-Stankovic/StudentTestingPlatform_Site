@@ -37,7 +37,7 @@ async function displayStudentInfo() {
 
 async function displayFinishedTests(){
 
-    let worksResponse = await apiHandler(APIController.getFinishedWorks, identity.id);
+    let worksResponse = await apiHandler(APIController.getWork,"student", identity.id);
 
     let testList = document.getElementById("testList");
 
@@ -57,7 +57,7 @@ async function displayFinishedTests(){
     }
 
     for (let work of worksResponse){
-        addFinishedTest(testList, work.workId, work.testName, work.points);
+        addFinishedTest(testList, work.workId, work.test.testName, work.points);
     }
 }
 

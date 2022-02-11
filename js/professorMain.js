@@ -37,7 +37,7 @@ async function displayTests() {
 
     let testList = document.getElementById("testList");
 
-    let testsResponse = await apiHandler(APIController.getProfessorTests, identity.id);
+    let testsResponse = await apiHandler(APIController.getTest, "professor", identity.id);
 
     if(testsResponse == undefined){
         return;
@@ -67,17 +67,18 @@ function hideTestDialog() {
     testOverlay.style.display = "none";
 }
 
-function showTestDialog(id) {
+function showTestDialog(id, testName) {
 
     let testOverlay = document.getElementById("testOverlay");
     let title = document.getElementById("testOverlayTitle");
     let questionButton = document.getElementById("questionButton");
     let actionButton = document.getElementById("actionButton");
 
-    displayTestInfo(id);
+    loadTest(id);
 
     questionButton.style.display = (id == null ? "none" : "block");
-    actionButton.innerText = (id == null ? "Create" : "Update");
+
+    actionButton.innerText = (id == null ? "Create" : "Save");
     if(id != null){
         actionButton.onclick = function(){
             updateTest(id);
@@ -87,11 +88,16 @@ function showTestDialog(id) {
             createTest();
         }
     }
+
+    questionButton.onclick = function(){
+        goToEditTest(id, testName);
+    }
+
     title.innerText = (id == null ? "Create test" : "Update test");
     testOverlay.style.display = "block";
 }
 
-async function displayTestInfo(id){
+async function loadTest(id) {
     
     let testNameField = document.getElementById("testNameField");
     let testDurationField = document.getElementById("testDurationField");
@@ -109,7 +115,7 @@ async function displayTestInfo(id){
         return;
     }
 
-    let testResponse = await apiHandler(APIController.getTest, id);
+    let testResponse = await apiHandler(APIController.getTest, "default", id);
 
     if(testResponse == undefined){
         return;
@@ -282,11 +288,22 @@ async function deleteTest(testId) {
                 displayTests();
                 break;
             default:
-                console.log(deleteResponse.statusCode);
+                console.log(deleteResponse);
         }
         return;
     }
 
+}
+
+function goToEditTest(testId, testName){
+    editTestInfo = {
+        testId : testId,
+        testName : testName
+    }
+
+    sessionStorage.setItem("editTestInfo", JSON.stringify(editTestInfo));
+
+    window.location = "professorEditTest.html";
 }
 
 function logout() {

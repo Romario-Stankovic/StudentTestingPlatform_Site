@@ -13,13 +13,13 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     
     <!-- Internal JS -->
-    <script src="js/database.js"></script>
-    <script src="js/viewController.js"></script>
+    <script src="js/core.js"></script>
+    <script src="js/professorEditTest.js"></script>
     
 </head>
 
 <body>
-    
+
     <!-- Background -->
     <img src="img/page_background.jpeg" class="background">
 
@@ -29,8 +29,13 @@
             <p id="testBrief">${TestName}</p>
         </div>
 
-        <button class="redButton" onclick="logout();">Return</button>
+        <button class="blueButton" onclick="saveQuestions(event);">Save</button>
+        <button class="redButton" onclick="goToProfessorMain(event);">Return</button>
     </nav>
+
+    <button class="addQuestionButton" onclick="addQuestion();">Add Question</button>
+    <div class="editQuestionList" id="questionList">
+    </div>
 
 </body>
 </html>

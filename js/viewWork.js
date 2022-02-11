@@ -18,7 +18,7 @@ async function displayFinishedQuestions(){
 
     let questionList = document.getElementById("questionList");
     
-    let questions = await apiHandler(APIController.getFinishedWorkQuestions, resultInfo.workId);
+    let questions = await apiHandler(APIController.getWorkQuestions, resultInfo.workId);
 
     for(let i = 0; i<questions.length; i++){
         let answers = Element;

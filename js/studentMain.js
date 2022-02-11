@@ -1,4 +1,4 @@
-let identityResponse;
+let identity;
 
 $(async function() {
     await displayStudentInfo();
@@ -30,9 +30,9 @@ async function displayStudentInfo() {
         logout();
     }
 
-    identityResponse = identityResponse;
+    identity = identityResponse;
 
-    studentBrief.innerText = identityResponse.firstName + " " + identityResponse.lastName + " - " + identityResponse.indexNumber;
+    studentBrief.innerText = identity.firstName + " " + identity.lastName + " - " + identity.indexNumber;
 
 }
 
@@ -67,7 +67,7 @@ async function displayActiveTests() {
 
 async function startTest(testId) {
     let data = {
-        studentId: identityResponse.id,
+        studentId: identity.id,
         testId: Number.parseInt(testId)
     }
 

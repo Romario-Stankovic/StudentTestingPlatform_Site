@@ -4,18 +4,18 @@ $(async function(){
 
     resultTestInfo = JSON.parse(sessionStorage.getItem("resultTestInfo"));
 
-    displayTestInfo();
+    loadTest();
     displayStudents();
 })
 
-function displayTestInfo(){
+function loadTest(){
     let testBrief = document.getElementById("testBrief");
     testBrief.innerText = resultTestInfo.testName;;
 }
 
 async function displayStudents() {
 
-    let worksResponse = await apiHandler(APIController.getStudentResults, resultTestInfo.testId);
+    let worksResponse = await apiHandler(APIController.getWork, "test", resultTestInfo.testId);
 
     let studentList = document.getElementById("studentList");
 
@@ -34,7 +34,8 @@ async function displayStudents() {
     }
 
     for(let work of worksResponse){
-        addStudentResult(studentList, work.workId, resultTestInfo.testName, work.studentIndexNumber, work.points);
+        let studentInfo = work.student.firstName + " " + work.student.lastName + " - " + work.student.indexNumber;
+        addStudentResult(studentList, work.workId, resultTestInfo.testName, studentInfo, work.points);
     }
 
 }

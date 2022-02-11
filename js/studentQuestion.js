@@ -162,7 +162,7 @@ async function uploadAnswers() {
         data.answers.push({ id: answer.id, isChecked: answer.checked });
     }
 
-    let updateResponse = await apiHandler(APIController.updateAnswers, data);
+    let updateResponse = await apiHandler(APIController.updateWorkAnswers, data);
 
     if (updateResponse.statusCode != undefined) {
         switch (updateResponse.statusCode) {

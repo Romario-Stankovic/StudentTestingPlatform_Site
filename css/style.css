@@ -27,6 +27,11 @@ button {
     cursor: pointer;
 }
 
+button .iconify {
+    height: 75%;
+    width: 75%;
+}
+
 button:hover {
     background-color: #e0e0e0;
 }
@@ -466,44 +471,44 @@ nav button {
 
 /* Test result view */
 
-.viewQuestion {
+.finishedQuestion {
     box-sizing: border-box;
     width: 95vw;
     margin: 0 auto 25px auto;
     padding: 1rem;
 }
 
-.viewQuestion .iconify {
+.finishedQuestion .iconify {
     width: 1.5rem;
     height: 1.5rem;
     margin: auto 0.5rem auto 0;
 }
 
-.viewQuestion .info {
+.finishedQuestion .info {
     display: flex;
 }
 
-.viewQuestion .info p{
+.finishedQuestion .info p{
     flex-grow: 1;
     margin: auto;
 }
 
-.viewQuestion .content {
+.finishedQuestion .content {
     display: none;
     height: fit-content;
 }
 
-.viewQuestion .question {
+.finishedQuestion .question {
     width: 95%;
     grid-template-rows: auto auto;
     row-gap: 10px;
 }
 
-.viewQuestion .questionNoImage {
+.finishedQuestion .questionNoImage {
     row-gap: 0;
 }
 
-.viewQuestion .answer {
+.finishedQuestion .answer {
     width: 95%;
 }
 
@@ -598,6 +603,74 @@ nav button {
 
 .studentList .listButton {
     margin: 1rem 0 1rem auto;
+}
+
+/* Edit Test */
+
+.addQuestionButton {
+    display: block;
+    width: 95vw;
+    margin: 0 auto 25px auto;
+    height: 2.5rem;
+}
+
+.addAnswerButton {
+    display: block;
+    margin: 0 auto;
+    width: 95%;
+}
+
+.editableQuestion {
+    box-sizing: border-box;
+    width: 95vw;
+    margin: 0 auto 25px auto;
+    padding: 1rem;
+}
+
+.editableQuestion .info {
+    display: flex;
+}
+
+.editableQuestion .info p {
+    flex-grow: 1;
+    margin: auto;
+}
+
+.editableQuestion .content {
+    height: fit-content;
+}
+
+.editableQuestion .question {
+    width: 95%;
+    grid-template-rows: auto auto;
+    row-gap: 10px;
+}
+
+.editableQuestion .questionNoImage {
+    row-gap: 0;
+}
+
+.editableQuestion textarea {
+    resize: none;
+    overflow: hidden;
+}
+
+.editableQuestion .answer {
+    width: 95%;
+}
+
+.editableQuestion .answer textarea {
+    width: 100%;
+}
+
+.editableQuestion .answer button {
+    width: 32px;
+    margin: auto auto auto 1rem;
+    vertical-align: middle;
+}
+
+.editableQuestion .answer button .iconify {
+    width: 100%;
 }
 
 /* Media */
