@@ -58,3 +58,35 @@ async function professorLogin(event) {
     localStorage.setItem("refreshToken", loginResponse.refreshToken);
     window.location = "professorMain.html";
 }
+
+async function adminLogin(event) {
+    event.preventDefault();
+
+    let username = document.getElementById("usernameField").value;
+    let password = document.getElementById("passwordField").value;
+
+    let loginResponse = await apiHandler(APIController.login,"admin", { username: username, password: password });
+
+    if (loginResponse.statusCode != undefined) {
+
+        switch (loginResponse.statusCode) {
+            case 400:
+                alert("Bad username or password");
+                break;
+            case 4001:
+                alert("User not found");
+                break;
+            case 4002:
+                alert("Bad password");
+                break;
+            default:
+                console.log(loginResponse);
+        }
+
+        return;
+    }
+
+    localStorage.setItem("token", loginResponse.token);
+    localStorage.setItem("refreshToken", loginResponse.refreshToken);
+    window.location = "adminMain.html";
+}

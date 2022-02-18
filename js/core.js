@@ -282,6 +282,270 @@ class APIController {
         })
     }
 
+    static getAllAdmins(){
+        return new Promise(resolve => {
+            $.ajax({
+                url: apiUrl + "api/admin/?by=all",
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": "Bearer " + localStorage.getItem("token")
+                }
+            }).done(data => {
+                resolve(data);
+            }).catch(error => {
+                resolve(error.responseJSON);
+            })
+        })
+    }
+
+    static getAllProfessors(){
+        return new Promise(resolve => {
+            $.ajax({
+                url: apiUrl + "api/professor/?by=all",
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": "Bearer " + localStorage.getItem("token")
+                }
+            }).done(data => {
+                resolve(data);
+            }).catch(error => {
+                resolve(error.responseJSON);
+            })
+        })
+    }
+
+    static getAllStudents(){
+        return new Promise(resolve => {
+            $.ajax({
+                url: apiUrl + "api/student/?by=all",
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": "Bearer " + localStorage.getItem("token")
+                }
+            }).done(data => {
+                resolve(data);
+            }).catch(error => {
+                resolve(error.responseJSON);
+            })
+        })
+    }
+
+    static deleteAdmin(data){
+        return new Promise(resolve => {
+            $.ajax({
+                url: apiUrl + "api/admin/",
+                method: "DELETE",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": "Bearer " + localStorage.getItem("token")
+                },
+                data: JSON.stringify(data)
+            }).done(data => {
+                resolve(data);
+            }).catch(error => {
+                resolve(error.responseJSON);
+            })
+        })
+    }
+
+    static deleteProfessor(data){
+        return new Promise(resolve => {
+            $.ajax({
+                url: apiUrl + "api/professor/",
+                method: "DELETE",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": "Bearer " + localStorage.getItem("token")
+                },
+                data: JSON.stringify(data)
+            }).done(data => {
+                resolve(data);
+            }).catch(error => {
+                resolve(error.responseJSON);
+            })
+        })
+    }
+
+    static deleteStudent(data){
+        return new Promise(resolve => {
+            $.ajax({
+                url: apiUrl + "api/student/",
+                method: "DELETE",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": "Bearer " + localStorage.getItem("token")
+                },
+                data: JSON.stringify(data)
+            }).done(data => {
+                resolve(data);
+            }).catch(error => {
+                resolve(error.responseJSON);
+            })
+        })
+    }
+
+    static getStudent(id){
+        return new Promise(resolve => {
+            $.ajax({
+                url: apiUrl + "api/student/?by=default&id=" + id,
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": "Bearer " + localStorage.getItem("token")
+                }
+            }).done(data => {
+                resolve(data);
+            }).catch(error => {
+                resolve(error.responseJSON);
+            })
+        })
+    }
+
+    static getAdministrator(id){
+        return new Promise(resolve => {
+            $.ajax({
+                url: apiUrl + "api/admin/?by=default&id=" + id,
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": "Bearer " + localStorage.getItem("token")
+                }
+            }).done(data => {
+                resolve(data);
+            }).catch(error => {
+                resolve(error.responseJSON);
+            })
+        })
+    }
+
+    static getProfessor(id){
+        return new Promise(resolve => {
+            $.ajax({
+                url: apiUrl + "api/professor/?by=default&id=" + id,
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": "Bearer " + localStorage.getItem("token")
+                }
+            }).done(data => {
+                resolve(data);
+            }).catch(error => {
+                resolve(error.responseJSON);
+            })
+        })
+    }
+
+    static addStudent(data){
+        return new Promise(resolve => {
+            $.ajax({
+                url: apiUrl + "api/student/",
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": "Bearer " + localStorage.getItem("token")
+                },
+                data: JSON.stringify(data)
+            }).done(data => {
+                resolve(data);
+            }).catch(error => {
+                resolve(error.responseJSON);
+            })
+        })
+    }
+
+    static addAdmin(data){
+        return new Promise(resolve => {
+            $.ajax({
+                url: apiUrl + "api/admin/",
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": "Bearer " + localStorage.getItem("token")
+                },
+                data: JSON.stringify(data)
+            }).done(data => {
+                resolve(data);
+            }).catch(error => {
+                resolve(error.responseJSON);
+            })
+        })
+    }
+
+    static addProfessor(data){
+        return new Promise(resolve => {
+            $.ajax({
+                url: apiUrl + "api/professor/",
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": "Bearer " + localStorage.getItem("token")
+                },
+                data: JSON.stringify(data)
+            }).done(data => {
+                resolve(data);
+            }).catch(error => {
+                resolve(error.responseJSON);
+            })
+        })
+    }
+
+    static updateAdmin(data){
+        return new Promise(resolve => {
+            $.ajax({
+                url: apiUrl + "api/admin/",
+                method: "PATCH",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": "Bearer " + localStorage.getItem("token")
+                },
+                data: JSON.stringify(data)
+            }).done(data => {
+                resolve(data);
+            }).catch(error => {
+                resolve(error.responseJSON);
+            })
+        })
+    }
+
+    static updateProfessor(data){
+        return new Promise(resolve => {
+            $.ajax({
+                url: apiUrl + "api/professor/",
+                method: "PATCH",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": "Bearer " + localStorage.getItem("token")
+                },
+                data: JSON.stringify(data)
+            }).done(data => {
+                resolve(data);
+            }).catch(error => {
+                resolve(error.responseJSON);
+            })
+        })
+    }
+
+    static updateStudent(data){
+        return new Promise(resolve => {
+            $.ajax({
+                url: apiUrl + "api/student/",
+                method: "PATCH",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": "Bearer " + localStorage.getItem("token")
+                },
+                data: JSON.stringify(data)
+            }).done(data => {
+                resolve(data);
+            }).catch(error => {
+                resolve(error.responseJSON);
+            })
+        })
+    }
+
 }
 
 async function apiHandler(callback, ...params) {
@@ -479,5 +743,16 @@ function addEditableAnswer(container, questionIndex, answerIndex, answerText, is
     </div>
     `;
 
+    container.innerHTML += html;
+}
+
+function addEditableUser(container, userInfo, type, id){
+    let html = `
+    <div class="listItem">
+        <p>${userInfo}</p>
+        <button class="blueButton" onclick="showUserDialog('${id}', '${type}');">Edit</button>
+        <button class="redButton" onclick="deleteUser('${type}', '${id}');">Delete</button>
+    </div>
+    `;
     container.innerHTML += html;
 }
