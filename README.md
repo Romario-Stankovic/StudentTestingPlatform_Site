@@ -1,6 +1,6 @@
 # Description
 
-A front-end application developed for student testing purposes.
+A front-end application developed for student testing.
 The source code of the API can be found [here.](https://github.com/Romario-Stankovic/Student_Testing_Platform_API)
 
 # Built using
