@@ -211,10 +211,10 @@ class APIController {
         })
     }
 
-    static updateTest(id, data){
+    static updateTest(data){
         return new Promise((resolve) => {
             $.ajax({
-                url: apiUrl + "api/test/?id=" + id,
+                url: apiUrl + "api/test/",
                 method: "PATCH",
                 headers: {
                     "Content-Type": "application/json",
@@ -229,7 +229,7 @@ class APIController {
         })
     }
 
-    static deleteTest(data){
+    static deleteTest(data) {
         return new Promise(resolve => {
             $.ajax({
                 url: apiUrl + "api/test/",
@@ -570,6 +570,24 @@ async function apiHandler(callback, ...params) {
 }
 
 const clamp = (num, min, max) => Math.min(Math.max(num, min), max);
+
+function adminLogout(){
+    localStorage.removeItem("token");
+    localStorage.removeItem("refreshToken");
+    window.location = "adminLogin.html";
+}
+
+function professorLogout() {
+    localStorage.removeItem("token");
+    localStorage.removeItem("refreshToken");
+    window.location = "professorLogin.html";
+}
+
+function studentLogout() {
+    localStorage.removeItem("token");
+    localStorage.removeItem("refreshToken");
+    window.location = "studentLogin.html";
+}
 
 /* Templates */
 

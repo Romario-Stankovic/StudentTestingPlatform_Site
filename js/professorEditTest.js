@@ -57,6 +57,7 @@ async function saveQuestions(event){
     let saveResponse = await apiHandler(APIController.updateTestQuestions, data);
 
     if(saveResponse == undefined){
+        alert("Could not contact API");
         return;
     }
 
@@ -64,6 +65,18 @@ async function saveQuestions(event){
         switch(saveResponse.statusCode){
             case 0:
                 window.location.reload();
+                break;
+            case 400:
+                alert("Bad request");
+                break;
+            case 401:
+                professorLogout();
+                break;
+            case 403:
+                alert("Forbidden");
+                break;
+            case 2001:
+                alert("Test does not exist");
                 break;
             default:
                 console.log(saveResponse);
@@ -82,11 +95,21 @@ async function getQuestions(){
     let questionsResponse = await apiHandler(APIController.getTestQuestions, editTestInfo.testId);
 
     if(questionsResponse == undefined){
+        alert("Could not contact API");
         return;
     }
 
     if(questionsResponse.statusCode != undefined){
         switch(questionsResponse.statusCode){
+            case 401:
+                professorLogout();
+                break;
+            case 403:
+                alert("Forbidden");
+                break;
+            case 2001:
+                console.log("No Questions");
+                break;
             default:
                 console.log(questionsResponse);
         }

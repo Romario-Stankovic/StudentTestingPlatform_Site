@@ -14,9 +14,18 @@ async function displayStudentInfo() {
 
     identity = await apiHandler(APIController.getIdentity);
 
+    if(identity == undefined){
+        alert("Could not contact API");
+        studentLogout();
+        return;
+    }
+
     if (identity.statusCode != undefined) {
         switch (identity.statusCode) {
             case 401:
+                studentLogout();
+                break;
+            case 4001:
                 studentLogout();
                 break;
             default:
@@ -44,11 +53,24 @@ async function displayFinishedTests(){
     clearContainer(testList);
 
     if(worksResponse == undefined){
+        alert("Could not contact API");
         return;
     }
 
     if(worksResponse.statusCode != undefined){
         switch(worksResponse.statusCode){
+            case 400:
+                alert("Bad Request");
+                break;
+            case 401:
+                studentLogout();
+                break;
+            case 403:
+                alert("Forbidden");
+                break;
+            case 2001:
+                testList.innerText = "No available works";
+                break;
             default:
                 console.log(worksResponse);
         }

@@ -40,18 +40,27 @@ async function displayQuestion() {
 
     let questionResponse = await apiHandler(APIController.getWorkQuestion, workInfo.workId, questionId);
 
-    if (questionResponse == undefined) {
+    if(questionResponse == undefined){
+        alert("Could not contact API");
         return;
     }
 
     if (questionResponse.statusCode != undefined) {
         switch (questionResponse.statusCode) {
-            case 3002:
-                window.location = "studentResult.html";
+            case 401:
+                studentLogout();
+                break;
+            case 403:
+                alert("Forbidden");
+                break;
+            case 2001:
+                alert("Failed to get question");
+                await nextQuestion();
                 break;
             default:
                 console.log(questionResponse);
         }
+        return;
     }
 
     let questionNumber = document.getElementById("questionNumber");
@@ -138,11 +147,32 @@ async function finishWork() {
 
     let finishResponse = await apiHandler(APIController.finishWork, data);
 
+    if(finishResponse == undefined){
+        alert("Could not contact API");
+        return;
+    }
+
     if (finishResponse.statusCode != undefined) {
         switch (finishResponse.statusCode) {
+            case 400:
+                alert("Bad Request");
+                break;
+            case 401:
+                studentLogout();
+                break;
+            case 403:
+                alert("Forbidden");
+                break;
+            case 2001:
+                alert("Work does not exist");
+                break;
+            case 3002:
+                window.location = "studentResult.html";
+                break;
             default:
                 console.log(finishResponse);
         }
+        return;
     }
 
     window.location = "studentResult.html";
@@ -163,11 +193,28 @@ async function uploadAnswers() {
     }
 
     let updateResponse = await apiHandler(APIController.updateWorkAnswers, data);
+    
+    if(updateResponse == undefined){
+        alert("Could not contact API");
+        return;
+    }
 
     if (updateResponse.statusCode != undefined) {
         switch (updateResponse.statusCode) {
             case 0:
                 return new Promise(resolve => { resolve(true) });
+            case 400:
+                alert("Bad Request");
+                return new Promise(resolve => { resolve(false) });
+            case 401:
+                studentLogout();
+                break;
+            case 403:
+                return new Promise(resolve => { resolve(false) });
+            case 1001:
+                return new Promise(resolve => { resolve(false) });
+            case 201:
+                return new Promise(resolve => { resolve(false) });
             case 3002:
                 return new Promise(resolve => { resolve(false) });
             default:

@@ -14,10 +14,19 @@ async function displayAdminInfo(){
 
     let identityResponse = await apiHandler(APIController.getIdentity);
 
+    if(identityResponse == undefined){
+        alert("Could not contact API");
+        adminLogout();
+        return;
+    }
+
     if(identityResponse.statusCode != undefined){
         switch(identityResponse.statusCode){
             case 401:
-                logout();
+                adminLogout();
+                break;
+            case 4001:
+                adminLogout();
                 break;
             default:
                 console.log(identityResponse);
@@ -26,7 +35,7 @@ async function displayAdminInfo(){
     }
 
     if(identityResponse.role != "administrator"){
-        logout();
+        adminLogout();
     }
 
     identity = identityResponse;
@@ -41,8 +50,32 @@ async function displayAdmins(){
     let userTypeInfo = document.getElementById("userTypeInfo");
     let addUserButton = document.getElementById("addUserButton");
 
+    let userList = document.getElementById("userList");
+    
+    userTypeInfo.innerText = "Administrators:";
+    addUserButton.onclick = function(){
+        showUserDialog(null, "admin");
+    }
+
+    if(adminsResponse == undefined){
+        alert("Could not contact API");
+        return;
+    }
+
     if(adminsResponse.statusCode != undefined) {
         switch(adminsResponse.statusCode){
+            case 400:
+                alert("Bad request");
+                break;
+            case 401:
+                adminLogout();
+                break;
+            case 403:
+                alert("Forbidden");
+                break;
+            case 2001:
+                userList.innerText = "No Administrators";
+                break;
             default:
                 console.log(adminsResponse);
         }
@@ -55,20 +88,41 @@ async function displayAdmins(){
         addEditableUser(userList, user.firstName + " " + user.lastName + " - " + user.username, "admin", user.administratorId);
     }
 
-    userTypeInfo.innerText = "Administrators:";
-    addUserButton.onclick = function(){
-        showUserDialog(null, "admin");
-    }
-
 }
 
 async function displayProfessors(){
     let professorResponse = await apiHandler(APIController.getAllProfessors);
 
+    let userTypeInfo = document.getElementById("userTypeInfo");
+    let addUserButton = document.getElementById("addUserButton");
+
     let userList = document.getElementById("userList");
+
+
+    userTypeInfo.innerText = "Professors:";
+    addUserButton.onclick = function(){
+        showUserDialog(null, "professor");
+    }
+
+    if(professorResponse == undefined){
+        alert("Could not contact API");
+        return;
+    }
 
     if(professorResponse.statusCode != undefined) {
         switch(professorResponse.statusCode){
+            case 400:
+                alert("Bad request");
+                break;
+            case 401:
+                adminLogout();
+                break;
+            case 403:
+                alert("Forbidden");
+                break;
+            case 2001:
+                userList.innerText = "No Professors";
+                break;
             default:
                 console.log(professorResponse);
         }
@@ -81,18 +135,40 @@ async function displayProfessors(){
         addEditableUser(userList, user.firstName + " " + user.lastName + " - " + user.username, "professor", user.professorId);
     }
 
-    userTypeInfo.innerText = "Professors:";
-    addUserButton.onclick = function(){
-        showUserDialog(null, "professor");
-    }
-
 }
 
 async function displayStudents(){
     let studentResponse = await apiHandler(APIController.getAllStudents);
 
+    let userTypeInfo = document.getElementById("userTypeInfo");
+    let addUserButton = document.getElementById("addUserButton");
+
+    let userList = document.getElementById("userList");
+
+    userTypeInfo.innerText = "Students:";
+    addUserButton.onclick = function(){
+        showUserDialog(null, "student");
+    }
+
+    if(studentResponse == undefined){
+        alert("Could not contact API");
+        return;
+    }
+
     if(studentResponse.statusCode != undefined) {
         switch(studentResponse.statusCode){
+            case 400:
+                alert("Bad request");
+                break;
+            case 401:
+                adminLogout();
+                break;
+            case 403:
+                alert("Forbidden");
+                break;
+            case 2001:
+                userList.innerText = "No Students";
+                break;
             default:
                 console.log(studentResponse);
         }
@@ -103,11 +179,6 @@ async function displayStudents(){
 
     for(let user of studentResponse){
         addEditableUser(userList, user.firstName + " " + user.lastName + " - " + user.indexNumber, "student", user.studentId);
-    }
-
-    userTypeInfo.innerText = "Students:";
-    addUserButton.onclick = function(){
-        showUserDialog(null, "student");
     }
 
 }
@@ -133,6 +204,11 @@ async function deleteUser(type, id){
         userResponse = await apiHandler(APIController.deleteStudent, data);
     }
 
+    if(userResponse == undefined){
+        alert("Could not contact API");
+        return;
+    }
+
     if(userResponse.statusCode != undefined){
         switch(userResponse.statusCode){
             case 0:
@@ -143,6 +219,18 @@ async function deleteUser(type, id){
                 }else if(type == "student"){
                     displayStudents();
                 }
+                break;
+            case 400:
+                alert("Bad request");
+                break;
+            case 401:
+                adminLogout();
+                break;
+            case 403:
+                alert("Forbidden");
+                break;
+            case 1002:
+                alert("Failed to delete");
                 break;
             default:
                 console.log(userResponse);
@@ -221,8 +309,25 @@ async function loadUser(id, type) {
         userResponse = await apiHandler(APIController.getProfessor, id);
     }
     
+    if(userResponse == undefined){
+        alert("Could not contact API");
+        return;
+    }
+
     if(userResponse.statusCode != undefined){
         switch(userResponse.statusCode){
+            case 400:
+                alert("Bad request");
+                break;
+            case 401:
+                adminLogout();
+                break;
+            case 403:
+                alert("Forbidden");
+                break;
+            case 2001:
+                alert("Can't load data");
+                break;
             default:
                 console.log(userResponse);
         }
@@ -272,8 +377,28 @@ async function addUser(type){
         createResponse = await apiHandler(APIController.addProfessor, data);
     }
 
+    if(createResponse == undefined){
+        alert("Could not contact API");
+        return;
+    }
+
     if(createResponse.statusCode != undefined){
         switch(createResponse.statusCode){
+            case 400:
+                alert("Bad request");
+                break;
+            case 401:
+                adminLogout();
+                break;
+            case 403:
+                alert("Forbidden");
+                break;
+            case 2002:
+                if(type == "student"){
+                    alert("Index number is already taken");
+                }else{
+                    alert("username is already taken");
+                }
             default:
                 console.log(createResponse);
         }
@@ -330,6 +455,11 @@ async function updateUser(id, type){
         createResponse = await apiHandler(APIController.updateProfessor, data);
     }
 
+    if(createResponse == undefined){
+        alert("Could not contact API");
+        return;
+    }
+
     if(createResponse.statusCode != undefined){
         switch(createResponse.statusCode){
             case 0:
@@ -342,16 +472,29 @@ async function updateUser(id, type){
                     displayProfessors();
                 }
                 break;
+            case 400:
+                alert("Bad request");
+                break;
+            case 401:
+                adminLogout();
+                break;
+            case 403:
+                alert("Forbidden");
+                break;
+            case 1001:
+                alert("Saving failed");
+                break;
+            case 2002:
+                if(type == "student"){
+                    alert("Index number is already taken");
+                }else{
+                    alert("username is already taken");
+                }
+                break;
             default:
                 console.log(createResponse);
         }
         return;
     }
 
-}
-
-function logout(){
-    localStorage.removeItem("token");
-    localStorage.removeItem("refreshToken");
-    window.location = "adminLogin.html";
 }

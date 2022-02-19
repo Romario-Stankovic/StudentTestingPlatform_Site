@@ -22,11 +22,24 @@ async function displayStudents() {
     clearContainer(studentList);
 
     if(worksResponse == undefined){
+        alert("Could not contact API");
         return;
     }
 
     if(worksResponse.statusCode != undefined){
         switch(worksResponse.statusCode){
+            case 400:
+                alert("Bad request");
+                break;
+            case 401:
+                professorLogout();
+                break;
+            case 403:
+                alert("Forbidden");
+                break;
+            case 2001:
+                studentList.innerText = "No works for this test";
+                break;
             default:
                 console.log(worksResponse);
         }

@@ -20,6 +20,30 @@ async function displayFinishedQuestions(){
     
     let questions = await apiHandler(APIController.getWorkQuestions, resultInfo.workId);
 
+    if(questions == undefined){
+        alert("Could not contact API");
+        return;
+    }
+
+    if(questions.statusCode != undefined){
+        switch(questions.statusCode){
+            case 401:
+                if(resultInfo.professorId != undefined){
+                    professorLogout();
+                }else{
+                    studentLogout();
+                }
+                break;
+            case 403:
+                alert("Forbidden");
+                break;
+            case 2001:
+                alert("Could not find work");
+                break;
+        }
+        return;
+    }
+
     for(let i = 0; i<questions.length; i++){
         let answers = Element;
         answers.innerHTML = "";

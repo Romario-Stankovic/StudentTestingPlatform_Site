@@ -5,11 +5,19 @@ async function studentLogin(event) {
 
     let loginResponse = await apiHandler(APIController.login, "student", { indexNumber: indexNumber });
 
+    if(loginResponse == undefined){
+        alert("Could not contact API");
+        return;
+    }
+
     if (loginResponse.statusCode != undefined) {
 
         switch (loginResponse.statusCode) {
             case 400:
                 alert("Bad index number format");
+                break;
+            case 1001:
+                alert("Login failed");
                 break;
             case 4001:
                 alert("Invalid index number");
@@ -35,11 +43,19 @@ async function professorLogin(event) {
 
     let loginResponse = await apiHandler(APIController.login,"professor", { username: username, password: password });
 
+    if(loginResponse == undefined){
+        alert("Could not contact API");
+        return;
+    }
+
     if (loginResponse.statusCode != undefined) {
 
         switch (loginResponse.statusCode) {
             case 400:
                 alert("Bad username or password");
+                break;
+            case 1001:
+                alert("Login failed");
                 break;
             case 4001:
                 alert("User not found");
@@ -67,11 +83,19 @@ async function adminLogin(event) {
 
     let loginResponse = await apiHandler(APIController.login,"admin", { username: username, password: password });
 
+    if(loginResponse == undefined){
+        alert("Could not contact API");
+        return;
+    }
+
     if (loginResponse.statusCode != undefined) {
 
         switch (loginResponse.statusCode) {
             case 400:
                 alert("Bad username or password");
+                break;
+            case 1001:
+                alert("Login failed");
                 break;
             case 4001:
                 alert("User not found");

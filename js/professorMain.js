@@ -12,10 +12,19 @@ async function displayProfessorInfo() {
 
     let identityResponse = await apiHandler(APIController.getIdentity);
 
+    if(identityResponse == undefined){
+        alert("Could not contact API");
+        professorLogout();
+        return;
+    }
+
     if (identityResponse.statusCode != undefined) {
         switch (identityResponse.statusCode) {
             case 401:
-                logout();
+                professorLogout();
+                break;
+            case 4001:
+                professorLogout();
                 break;
             default:
                 console.log(identityResponse);
@@ -24,7 +33,7 @@ async function displayProfessorInfo() {
     }
 
     if (identityResponse.role != "professor") {
-        logout();
+        professorLogout();
     }
 
     identity = identityResponse;
@@ -39,14 +48,24 @@ async function displayTests() {
 
     let testsResponse = await apiHandler(APIController.getTest, "professor", identity.id);
 
-    if(testsResponse == undefined){
+    if(testResponse == undefined){
+        alert("Could not contact API");
         return;
     }
 
     if (testsResponse.statusCode != undefined) {
         switch (testsResponse.statusCode) {
+            case 400:
+                alert("Bad request");
+                break;
             case 401:
-                logout();
+                professorLogout();
+                break;
+            case 403:
+                alert("Forbidden");
+                break;
+            case 2001:
+                testList.innerText = "No tests";
                 break;
             default:
                 console.log(testsResponse);
@@ -118,11 +137,24 @@ async function loadTest(id) {
     let testResponse = await apiHandler(APIController.getTest, "default", id);
 
     if(testResponse == undefined){
+        alert("Could not contact API");
         return;
     }
 
     if(testResponse.statusCode != undefined){
         switch(testResponse.statusCode){
+            case 400:
+                alert("Bad request");
+                break;
+            case 401:
+                professorLogout();
+                break;
+            case 403:
+                alert("Forbidden");
+                break;
+            case 2001:
+                alert("Cannot load data");
+                break;
             default:
                 console.log(testResponse);
         }
@@ -153,6 +185,7 @@ async function updateTest(id) {
     }
 
     let testData = {
+        testId: Number.parseInt(id),
         professorId: Number.parseInt(identity.id),
         testName: testNameField.value,
         duration: testDuration * 60,
@@ -161,17 +194,31 @@ async function updateTest(id) {
         endAt: endAtField.value
     }
 
-    let updateResponse = await apiHandler(APIController.updateTest, id, testData);
+    let updateResponse = await apiHandler(APIController.updateTest, testData);
+
+    if(updateResponse == undefined){
+        alert("Could not contact API");
+        return;
+    }
 
     if (updateResponse.statusCode != undefined) {
 
         switch (updateResponse.statusCode) {
-            case 401:
-                logout();
-                break;
             case 0:
                 displayTests();
                 hideTestDialog();
+                break;
+            case 400:
+                alert("Bad request");
+                break;
+            case 401:
+                professorLogout();
+                break;
+            case 403:
+                alert("Forbidden");
+                break;
+            case 1001:
+                alert("Update failed");
                 break;
             default:
                 console.log(updateResponse);
@@ -206,16 +253,30 @@ async function createTest(){
         endAt: endAtField.value
     }
 
-    updateResponse = await apiHandler(APIController.createTest, testData);
+    let createResponse = await apiHandler(APIController.createTest, testData);
 
-    if (updateResponse.statusCode != undefined) {
+    if(createResponse == undefined){
+        alert("Could not contact API");
+        return;
+    }
 
-        switch (updateResponse.statusCode) {
+    if (createResponse.statusCode != undefined) {
+
+        switch (createResponse.statusCode) {
+            case 400:
+                alert("Bad request");
+                break;
             case 401:
-                logout();
+                professorLogout();
+                break;
+            case 403:
+                alert("Forbidden");
+                break;
+            case 1001:
+                alert("Saving failed");
                 break;
             default:
-                console.log(updateResponse);
+                console.log(createResponse);
         }
 
         return;
@@ -276,16 +337,26 @@ async function deleteTest(testId) {
     let deleteResponse = await apiHandler(APIController.deleteTest, data);
 
     if(deleteResponse == undefined){
+        alert("Could not contact API");
         return;
     }
 
     if(deleteResponse.statusCode != undefined){
         switch(deleteResponse.statusCode){
-            case 401:
-                logout();
-                break;
             case 0:
                 displayTests();
+                break;
+            case 400:
+                alert("Bad request");
+                break;
+            case 401:
+                professorLogout();
+                break;
+            case 403:
+                alert("Forbidden");
+                break;
+            case 1002:
+                alert("Failed to delete");
                 break;
             default:
                 console.log(deleteResponse);
@@ -304,10 +375,4 @@ function goToEditTest(testId, testName){
     sessionStorage.setItem("editTestInfo", JSON.stringify(editTestInfo));
 
     window.location = "professorEditTest.html";
-}
-
-function logout() {
-    localStorage.removeItem("token");
-    localStorage.removeItem("refreshToken");
-    window.location = "professorLogin.html";
 }

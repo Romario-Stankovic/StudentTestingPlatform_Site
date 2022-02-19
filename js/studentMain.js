@@ -12,13 +12,18 @@ async function displayStudentInfo() {
     let identityResponse = await apiHandler(APIController.getIdentity);
 
     if(identityResponse == undefined){
+        alert("Could not contact API");
+        studentLogout();
         return;
     }
 
     if (identityResponse.statusCode != undefined) {
         switch (identityResponse.statusCode) {
             case 401:
-                logout();
+                studentLogout();
+                break;
+            case 4001:
+                studentLogout();
                 break;
             default:
                 console.log(identityResponse);
@@ -27,7 +32,7 @@ async function displayStudentInfo() {
     }
 
     if (identityResponse.role != "student") {
-        logout();
+        studentLogout();
     }
 
     identity = identityResponse;
@@ -44,14 +49,21 @@ async function displayActiveTests() {
 
     let testsResponse = await apiHandler(APIController.getActiveTests);
 
-    if (testsResponse == undefined) {
+    if(testsResponse == undefined){
+        alert("Could not contact API");
         return;
     }
 
     if (testsResponse.statusCode != undefined) {
         switch (test.statusCode) {
             case 401:
-                logout();
+                studentLogout();
+                break;
+            case 403:
+                alert("Forbidden");
+                break;
+            case 2001:
+                testList.innerText = "No active tests";
                 break;
             default:
                 console.log(testsResponse);
@@ -74,13 +86,26 @@ async function startTest(testId) {
     let workResponse = await apiHandler(APIController.startWork, data);
 
     if(workResponse == undefined){
+        alert("Could not contact API");
         return;
     }
 
     if (workResponse.statusCode != undefined) {
         switch (workResponse.statusCode) {
+            case 400:
+                alert("Bad request");
+                break;
             case 401:
-                logout();
+                studentLogout();
+                break;
+            case 403:
+                alert("Forbidden");
+                break;
+            case 1001:
+                alert("Failed to start test");
+                break;
+            case 3001:
+                alert("Failed to start test (bad test)");
                 break;
             default:
                 console.log(workResponse);
@@ -106,12 +131,6 @@ async function startTest(testId) {
 function goToStudentProfile(event) {
     event.preventDefault();
     window.location = "studentProfile.html";
-}
-
-function logout() {
-    localStorage.removeItem("token");
-    localStorage.removeItem("refreshToken");
-    window.location = "studentLogin.html";
 }
 
 function refreshActiveTests(){
