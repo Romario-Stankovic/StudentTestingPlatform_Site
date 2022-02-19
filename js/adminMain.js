@@ -65,7 +65,7 @@ async function displayAdmins(){
     if(adminsResponse.statusCode != undefined) {
         switch(adminsResponse.statusCode){
             case 400:
-                alert("Bad request");
+                alert(adminsResponse.message);
                 break;
             case 401:
                 adminLogout();
@@ -112,7 +112,7 @@ async function displayProfessors(){
     if(professorResponse.statusCode != undefined) {
         switch(professorResponse.statusCode){
             case 400:
-                alert("Bad request");
+                alert(professorResponse.message);
                 break;
             case 401:
                 adminLogout();
@@ -158,7 +158,7 @@ async function displayStudents(){
     if(studentResponse.statusCode != undefined) {
         switch(studentResponse.statusCode){
             case 400:
-                alert("Bad request");
+                alert(studentResponse.message);
                 break;
             case 401:
                 adminLogout();
@@ -221,7 +221,7 @@ async function deleteUser(type, id){
                 }
                 break;
             case 400:
-                alert("Bad request");
+                alert(userResponse.message);
                 break;
             case 401:
                 adminLogout();
@@ -317,7 +317,7 @@ async function loadUser(id, type) {
     if(userResponse.statusCode != undefined){
         switch(userResponse.statusCode){
             case 400:
-                alert("Bad request");
+                alert(userResponse.message);
                 break;
             case 401:
                 adminLogout();
@@ -385,7 +385,7 @@ async function addUser(type){
     if(createResponse.statusCode != undefined){
         switch(createResponse.statusCode){
             case 400:
-                alert("Bad request");
+                alert(createResponse.message);
                 break;
             case 401:
                 adminLogout();
@@ -425,7 +425,7 @@ async function updateUser(id, type){
     let passwordField = document.getElementById("passwordField");
     let indexNumberField = document.getElementById("indexNumberField");
 
-    let createResponse;
+    let updateResponse;
 
     if(type == "student"){
         let data = {
@@ -434,7 +434,7 @@ async function updateUser(id, type){
             lastName: lastNameField.value,
             indexNumber: indexNumberField.value
         }
-        createResponse = await apiHandler(APIController.updateStudent, data);
+        updateResponse = await apiHandler(APIController.updateStudent, data);
     }else if(type == "admin"){
         let data = {
             administratorId: Number.parseInt(id),
@@ -443,7 +443,7 @@ async function updateUser(id, type){
             username: usernameField.value,
             password: passwordField.value.length != 0 ? passwordField.value : null
         }
-        createResponse = await apiHandler(APIController.updateAdmin, data);
+        updateResponse = await apiHandler(APIController.updateAdmin, data);
     }else if(type == "professor"){
         let data = {
             professorId : Number.parseInt(id),
@@ -452,16 +452,16 @@ async function updateUser(id, type){
             username: usernameField.value,
             password: passwordField.value.length != 0 ? passwordField.value : null
         }
-        createResponse = await apiHandler(APIController.updateProfessor, data);
+        updateResponse = await apiHandler(APIController.updateProfessor, data);
     }
 
-    if(createResponse == undefined){
+    if(updateResponse == undefined){
         alert("Could not contact API");
         return;
     }
 
-    if(createResponse.statusCode != undefined){
-        switch(createResponse.statusCode){
+    if(updateResponse.statusCode != undefined){
+        switch(updateResponse.statusCode){
             case 0:
                 hideUserDialog();
                 if(type == "student"){
@@ -473,7 +473,7 @@ async function updateUser(id, type){
                 }
                 break;
             case 400:
-                alert("Bad request");
+                alert(updateResponse.message);
                 break;
             case 401:
                 adminLogout();
@@ -492,7 +492,7 @@ async function updateUser(id, type){
                 }
                 break;
             default:
-                console.log(createResponse);
+                console.log(updateResponse);
         }
         return;
     }

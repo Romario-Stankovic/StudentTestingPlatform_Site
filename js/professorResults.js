@@ -29,7 +29,7 @@ async function displayStudents() {
     if(worksResponse.statusCode != undefined){
         switch(worksResponse.statusCode){
             case 400:
-                alert("Bad request");
+                alert(worksResponse.message);
                 break;
             case 401:
                 professorLogout();

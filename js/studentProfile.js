@@ -60,7 +60,7 @@ async function displayFinishedTests(){
     if(worksResponse.statusCode != undefined){
         switch(worksResponse.statusCode){
             case 400:
-                alert("Bad Request");
+                alert(worksResponse.message);
                 break;
             case 401:
                 studentLogout();

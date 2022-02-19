@@ -25,7 +25,7 @@ async function displayResult(){
     if(workResponse.statusCode != undefined){
         switch(workResponse.statusCode){
             case 400:
-                alert("Bad request");
+                alert(workResponse.message);
                 break;
             case 401:
                 studentLogout();

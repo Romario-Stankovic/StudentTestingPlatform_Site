@@ -55,7 +55,7 @@ async function displayActiveTests() {
     }
 
     if (testsResponse.statusCode != undefined) {
-        switch (test.statusCode) {
+        switch (testsResponse.statusCode) {
             case 401:
                 studentLogout();
                 break;
@@ -93,7 +93,7 @@ async function startTest(testId) {
     if (workResponse.statusCode != undefined) {
         switch (workResponse.statusCode) {
             case 400:
-                alert("Bad request");
+                alert(workResponse.message);
                 break;
             case 401:
                 studentLogout();

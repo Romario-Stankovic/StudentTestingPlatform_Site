@@ -48,7 +48,7 @@ async function displayTests() {
 
     let testsResponse = await apiHandler(APIController.getTest, "professor", identity.id);
 
-    if(testResponse == undefined){
+    if(testsResponse == undefined){
         alert("Could not contact API");
         return;
     }
@@ -56,7 +56,7 @@ async function displayTests() {
     if (testsResponse.statusCode != undefined) {
         switch (testsResponse.statusCode) {
             case 400:
-                alert("Bad request");
+                alert(testsResponse.message);
                 break;
             case 401:
                 professorLogout();
@@ -144,7 +144,7 @@ async function loadTest(id) {
     if(testResponse.statusCode != undefined){
         switch(testResponse.statusCode){
             case 400:
-                alert("Bad request");
+                alert(testResponse.message);
                 break;
             case 401:
                 professorLogout();
@@ -209,7 +209,7 @@ async function updateTest(id) {
                 hideTestDialog();
                 break;
             case 400:
-                alert("Bad request");
+                alert(updateResponse.message);
                 break;
             case 401:
                 professorLogout();
@@ -264,7 +264,7 @@ async function createTest(){
 
         switch (createResponse.statusCode) {
             case 400:
-                alert("Bad request");
+                alert(createResponse.message);
                 break;
             case 401:
                 professorLogout();
@@ -311,7 +311,7 @@ function verifyTestData(testName, testDuration, questionCount, startAt, endAt) {
     }
 
     if (messages.length > 0) {
-        console.log(messages);
+        alert(messages);
         return false;
     }
 
@@ -347,7 +347,7 @@ async function deleteTest(testId) {
                 displayTests();
                 break;
             case 400:
-                alert("Bad request");
+                alert(deleteResponse.message);
                 break;
             case 401:
                 professorLogout();

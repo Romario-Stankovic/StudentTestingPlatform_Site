@@ -64,10 +64,11 @@ async function saveQuestions(event){
     if(saveResponse.statusCode != undefined){
         switch(saveResponse.statusCode){
             case 0:
+                alert("Edit successful");
                 window.location.reload();
                 break;
             case 400:
-                alert("Bad request");
+                alert(saveResponse.message);
                 break;
             case 401:
                 professorLogout();

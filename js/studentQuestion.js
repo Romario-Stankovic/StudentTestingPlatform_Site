@@ -204,7 +204,7 @@ async function uploadAnswers() {
             case 0:
                 return new Promise(resolve => { resolve(true) });
             case 400:
-                alert("Bad Request");
+                alert(updateResponse.message);
                 return new Promise(resolve => { resolve(false) });
             case 401:
                 studentLogout();
