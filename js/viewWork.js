@@ -63,7 +63,7 @@ async function displayFinishedQuestions(){
                 correct++;
             }
 
-            addFinishedAnswer(answers, i, answer.answerText, questions[i].multichoice, answer.isCorrect, answer.isChecked);
+            addFinishedAnswer(answers, i, answer.answerText, answer.imagePath, questions[i].multichoice, answer.isCorrect, answer.isChecked);
         }
         
         if(incorrect > 0){

@@ -82,7 +82,7 @@ async function displayQuestion() {
 
     questionText.innerText = questionResponse.questionText;
 
-    questionImage.src = questionResponse.imagePath != null ? apiPhotoUrl + questionResponse.imagePath : "img/noquestionimage.png";
+    questionImage.src = questionResponse.imagePath != null ? apiAssetsURL + "images/questions/" + questionResponse.imagePath : "img/noquestionimage.png";
 
     if (questionResponse.imagePath == null) {
         let questionPanel = document.getElementById("questionPanel");
@@ -90,7 +90,7 @@ async function displayQuestion() {
     }
 
     for (let answer of questionResponse.answers) {
-        addAnswer(answerList, answer.answerId, answer.answerText, questionResponse.multichoice, answer.isChecked);
+        addAnswer(answerList, answer.answerId, answer.answerText, answer.imagePath, questionResponse.multichoice, answer.isChecked);
     }
 
     workInfo.questionDuration = questionResponse.duration;

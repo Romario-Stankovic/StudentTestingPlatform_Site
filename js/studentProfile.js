@@ -40,7 +40,7 @@ async function displayStudentInfo() {
 
     studentNameLabel.innerText = identity.firstName + " " + identity.lastName;
     studentIndexLabel.innerText = identity.indexNumber;
-    studentProfilePicture.src = identity.imagePath != null ? apiPhotoUrl + identity.imagePath : "img/nouser.png";
+    studentProfilePicture.src = identity.imagePath != null ? apiAssetsURL + "images/students/" + identity.imagePath : "img/nouser.png";
 
 }
 

@@ -247,6 +247,7 @@ function showUserDialog(id, type) {
     let userOverlay = document.getElementById("userOverlay");
     let title = document.getElementById("userOverlayTitle");
     let actionButton = document.getElementById("actionButton");
+    let photoButton = document.getElementById("photoButton");
 
     loadUser(id, type);
 
@@ -256,10 +257,18 @@ function showUserDialog(id, type) {
         actionButton.onclick = function(){
             updateUser(id, type);
         }
+
+        if(type == "admin"){
+            photoButton.style.display = "none";
+        }else{
+            photoButton.style.display = "block";
+        }
+
     }else {
         actionButton.onclick = function(){
             addUser(type);
         }
+        photoButton.style.display = "none";
     }
 
     title.innerText = (id == null ? "Add" : "Update") + " " + type;
@@ -424,6 +433,58 @@ async function updateUser(id, type){
     let usernameField = document.getElementById("usernameField");
     let passwordField = document.getElementById("passwordField");
     let indexNumberField = document.getElementById("indexNumberField");
+    let photoField = document.getElementById("uploadInput");
+
+    console.log(photoField.files);
+
+    if(photoField.files.length > 0){
+        let formData = new FormData();
+        formData.append("image", photoField.files[0]);
+        let uploadResponse;
+        
+        if(type == "student"){
+            uploadResponse = await apiHandler(APIController.uploadStudentPhoto, id, formData);
+        }else if(type == "professor"){
+            uploadResponse = await apiHandler(APIController.uploadProfessorPhoto, id, formData);
+        }
+
+        if(uploadResponse == undefined){
+            alert("Could not contact API");
+        }
+
+        if (uploadResponse.statusCode != undefined) {
+            switch (uploadResponse.statusCode) {
+                case 0:
+                    alert("Photo upload successful");
+                    break;
+                case 401:
+                    adminLogout();
+                    break;
+                case 403:
+                    alert("Forbidden");
+                    break;
+                case 413:
+                    alert("Image too large");
+                    break;
+                case 415:
+                    alert("Image in the wrong format");
+                    break;
+                case 1001:
+                    alert("Upload failed");
+                    break;
+                case 2001:
+                    alert("Saving failed");
+                    break;
+                case 2003:
+                    alert("Saving failed");
+                    break;
+                default:
+                    console.log(uploadResponse);
+            }
+        }
+
+        photoField.value = "";
+    }
 
     let updateResponse;
 
@@ -471,6 +532,7 @@ async function updateUser(id, type){
                 }else if(type == "professor"){
                     displayProfessors();
                 }
+                alert("Success");
                 break;
             case 400:
                 alert(updateResponse.message);
@@ -497,4 +559,9 @@ async function updateUser(id, type){
         return;
     }
 
+}
+
+function showUploadDialog() {
+    let uploadInput = document.getElementById("uploadInput");
+    uploadInput.click();
 }

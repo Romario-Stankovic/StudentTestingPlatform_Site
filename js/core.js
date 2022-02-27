@@ -1,5 +1,5 @@
 const apiUrl = "http://localhost:4000/";
-const apiPhotoUrl = apiUrl + "assets/images/";
+const apiAssetsURL = apiUrl + "assets/";
 
 class APIController {
 
@@ -546,6 +546,82 @@ class APIController {
         })
     }
 
+    static uploadStudentPhoto(id, formData){
+        return new Promise(resolve => {
+            $.ajax({
+                url: apiUrl + "api/student/image?id=" + id,
+                method: "POST",
+                headers: {
+                    "Authorization": "Bearer " + localStorage.getItem("token")
+                },
+                data: formData,
+                processData: false,
+                contentType: false
+            }).done(data => {
+                resolve(data);
+            }).catch(error => {
+                resolve(error.responseJSON);
+            })
+        })
+    }
+
+    static uploadProfessorPhoto(id, formData){
+        return new Promise(resolve => {
+            $.ajax({
+                url: apiUrl + "api/professor/image?id=" + id,
+                method: "POST",
+                headers: {
+                    "Authorization": "Bearer " + localStorage.getItem("token")
+                },
+                data: formData,
+                processData: false,
+                contentType: false
+            }).done(data => {
+                resolve(data);
+            }).catch(error => {
+                resolve(error.responseJSON);
+            })
+        })
+    }
+
+    static uploadQuestionPhoto(id, formData){
+        return new Promise(resolve => {
+            $.ajax({
+                url: apiUrl + "api/test/question/image?id=" + id,
+                method: "POST",
+                headers: {
+                    "Authorization": "Bearer " + localStorage.getItem("token")
+                },
+                data: formData,
+                processData: false,
+                contentType: false
+            }).done(data => {
+                resolve(data);
+            }).catch(error => {
+                resolve(error.responseJSON);
+            })
+        })
+    }
+
+    static uploadAnswerPhoto(id, formData){
+        return new Promise(resolve => {
+            $.ajax({
+                url: apiUrl + "api/test/answer/image?id=" + id,
+                method: "POST",
+                headers: {
+                    "Authorization": "Bearer " + localStorage.getItem("token")
+                },
+                data: formData,
+                processData: false,
+                contentType: false
+            }).done(data => {
+                resolve(data);
+            }).catch(error => {
+                resolve(error.responseJSON);
+            })
+        })
+    }
+
 }
 
 async function apiHandler(callback, ...params) {
@@ -605,12 +681,15 @@ function addActiveTest(container, testID, testName) {
     container.innerHTML += html;
 }
 
-function addAnswer(container, answerID, answerText, multichoice, isChecked){
-    
+function addAnswer(container, answerID, answerText, image, multichoice, isChecked){
+
     let type = multichoice == true ? "checkbox" : "radio";
     let checked = isChecked == true ? "checked" : "";
+    let imageUrl = image != null ? apiAssetsURL + "images/answers/" + image : "img/noquestionimage.png";
+    let imageVisible = image != null ? "" : "hidden";
     let html = `
     <div class="panel answer">
+        <img src="${imageUrl}" ${imageVisible}>
         <p>${answerText}</p>
         <input id="${answerID}" type="${type}" name="answer" ${checked}>
         <label for="${answerID}"></label>
@@ -632,7 +711,7 @@ function addFinishedTest(container, workId, testName, score){
 }
 
 function addFinishedQuestion(container, questionNo, image, text, questionState, answerHTML){
-        
+
     let icons = [
         "ant-design:close-outlined",
         "ant-design:check-outlined",
@@ -648,9 +727,9 @@ function addFinishedQuestion(container, questionNo, image, text, questionState, 
     let icon = icons[questionState];
     let color = colors[questionState];
 
-    let imageStatus = image == null ? "questionNoImage" : "";
+    let imageVisible = image != null ? "" : "hidden";
 
-    let imageUrl = image != null ? apiPhotoUrl + image : "img/noquestionimage.png";
+    let imageUrl = image != null ? apiAssetsURL + "images/questions/" + image : "img/noquestionimage.png";
 
     let html = `
     <div class="panel finishedQuestion">
@@ -660,8 +739,8 @@ function addFinishedQuestion(container, questionNo, image, text, questionState, 
             <button class="blueButton" onclick="expandQuestion(this);">Expand</button>
         </div>
         <div class="content">
-            <div class="panel question ${imageStatus}">
-                <img src="${imageUrl}">
+            <div class="panel question">
+                <img src="${imageUrl}" ${imageVisible}>
                 <p class="text">${text}</p>
             </div>
             <div>
@@ -675,7 +754,7 @@ function addFinishedQuestion(container, questionNo, image, text, questionState, 
     container.innerHTML += html;
 }
 
-function addFinishedAnswer(container, questionNo, answerText, multichoice, isCorrect, isChecked) {
+function addFinishedAnswer(container, questionNo, answerText, image, multichoice, isCorrect, isChecked) {
 
     let icon = isCorrect == true ? "ant-design:check-outlined" : "ant-design:close-outlined";
 
@@ -685,9 +764,14 @@ function addFinishedAnswer(container, questionNo, answerText, multichoice, isCor
 
     let color = isCorrect == true ? "#3acc07" : "#d71920";
 
+    let imageUrl = image != null ? apiAssetsURL + "images/answers/" + image : "img/noquestionimage.png";
+
+    let imageVisible = image != null ? "" : "hidden";
+
     let html = `
     <div class="panel answer" style="border: 2px solid ${color}">
         <span class="iconify" data-icon="${icon}" style="color: ${color}"></span>
+        <img src="${imageUrl}", ${imageVisible}>
         <p>${answerText}</p>
         <input type="${type}" name="answer_${questionNo}" disabled ${checked}>
     </div>
@@ -721,20 +805,24 @@ function addStudentResult(container, workId, testName, studentIndex, score){
 
 function addEditableQuestion(container, questionIndex, image, text, editableAnswerHTML){
 
-    let imageStatus = image == null ? "questionNoImage" : "";
+    let imageUrl = image != null ? apiAssetsURL + "images/questions/" + image : "img/noquestion.png";
 
-    let imageUrl = image != null ? apiPhotoUrl + image : "img/noquestionimage.png";
+    let imageVisible = image != null ? "" : "hidden";
+
+    let uploadButtonVisibility = questions[questionIndex].questionId != null ? "" : "hidden";
 
     let html = `
     <div class="panel editableQuestion" id="question_${questionIndex}">
         <div class="info">
             <p>Question: ${questionIndex + 1}</p>
+            <button class="blueButton" onclick="showQuestionUploadDialog(this, '${questionIndex}');" ${uploadButtonVisibility}>Upload Photo</button>
+            <input type="file" id="uploadInput" accept=".png, .jpg, .jpeg" hidden>
             <button class="redButton" onclick="deleteQuestion(${questionIndex})">Delete</button>
         </div>
         <div>
-            <div class="panel question ${imageStatus}">
-                <img src="${imageUrl}">
-                <textarea class="text" oninput="resizeTextArea(this); updateQustionText(${questionIndex}, this)">${text}</textarea>
+            <div class="panel question">
+                <img src="${imageUrl}" ${imageVisible}>
+                <textarea class="text" oninput="resizeTextArea(this); updateQuestionText(${questionIndex}, this)">${text}</textarea>
             </div>
             <div>
                 ${editableAnswerHTML}
@@ -749,15 +837,24 @@ function addEditableQuestion(container, questionIndex, image, text, editableAnsw
 
 }
 
-function addEditableAnswer(container, questionIndex, answerIndex, answerText, isCorrect){
+function addEditableAnswer(container, questionIndex, answerIndex, answerText, image, isCorrect){
 
     let checked = isCorrect == true ? "checked" : "";
 
+    let uploadButtonVisibility = questions[questionIndex].answers[answerIndex].answerId != undefined ? "" : "hidden";
+
+    let imageUrl = image != null ? apiAssetsURL + "images/answers/" + image : "img/noquestionimage.png";
+
+    let imageVisible = image != null ? "" : "hidden";
+
     let html = `
     <div class="panel answer">
+        <img src="${imageUrl}" ${imageVisible}>
         <textarea oninput="resizeTextArea(this); updateAnswerText('${questionIndex}', '${answerIndex}', this);">${answerText}</textarea>
         <input type="checkbox" name="answer_${questionIndex}" ${checked} onclick="updateAnswerCheckbox('${questionIndex}', '${answerIndex}', this)">
+        <button class="blueButton" onclick="showAnswerUploadDialog(this,'${questionIndex}','${answerIndex}')" ${uploadButtonVisibility}><span class="iconify" data-icon="ant-design:picture-outlined"></span></button>
         <button class="redButton" onclick="deleteAnswer('${questionIndex}','${answerIndex}')"><span class="iconify" data-icon="ant-design:delete-outlined"></span></button>
+        <input type="file" id="uploadInput" accept=".png, .jpg, .jpeg" hidden>
     </div>
     `;
 
