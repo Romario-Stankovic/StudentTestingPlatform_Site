@@ -248,6 +248,10 @@ function showUserDialog(id, type) {
     let title = document.getElementById("userOverlayTitle");
     let actionButton = document.getElementById("actionButton");
     let photoButton = document.getElementById("photoButton");
+    let photoField = document.getElementById("uploadInput");
+    photoField.value = "";
+
+    photoButton.classList.remove("greenButton");
 
     loadUser(id, type);
 
@@ -435,8 +439,6 @@ async function updateUser(id, type){
     let indexNumberField = document.getElementById("indexNumberField");
     let photoField = document.getElementById("uploadInput");
 
-    console.log(photoField.files);
-
     if(photoField.files.length > 0){
         let formData = new FormData();
         formData.append("image", photoField.files[0]);
@@ -561,7 +563,10 @@ async function updateUser(id, type){
 
 }
 
-function showUploadDialog() {
+function showUploadDialog(button) {
     let uploadInput = document.getElementById("uploadInput");
     uploadInput.click();
+    uploadInput.onchange = function(event) {
+        button.classList.add("greenButton");
+    }
 }
