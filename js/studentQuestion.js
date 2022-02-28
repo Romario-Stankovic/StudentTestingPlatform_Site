@@ -84,6 +84,8 @@ async function displayQuestion() {
 
     questionImage.src = questionResponse.imagePath != null ? apiAssetsURL + "images/questions/" + questionResponse.imagePath : "img/noquestionimage.png";
 
+    questionImage.hidden = questionResponse.imagePath != null ? "" : "hidden";
+
     if (questionResponse.imagePath == null) {
         let questionPanel = document.getElementById("questionPanel");
         questionPanel.classList.add("questionNoImage");

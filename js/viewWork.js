@@ -68,13 +68,9 @@ async function displayFinishedQuestions(){
         
         if(incorrect > 0){
             correctState = 0;
-        }
-
-        if(correct == 0) {
+        }else if(correct == 0) {
             correctState = 0;
-        }
-
-        if(correct > 0 && correct < totalCorrect){
+        }else if(correct > 0 && correct < totalCorrect){
             correctState = 2;
         }
 
