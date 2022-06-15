@@ -24,12 +24,32 @@ Some of the features available are:
 
 ## 📷 Screenshots
 
+### Login Page
+
 <img src="assets/login.png" width="75%">
+
+### Admin Panel
+
 <img src="assets/admin.png" width="75%">
+
+### Test Creation Panel
+
 <img src="assets/testcreation.png" width="75%">
+
+### Student Test List
+
 <img src="assets/testlist.png" width="75%">
+
+### Test Assessment
+
 <img src="assets/testpanel.png" width="75%">
+
+### Student Profile
+
 <img src="assets/profile.png" width="75%">
+
+### Result Page
+
 <img src="assets/result.png" width="75%">
 
 ## ⚡ Getting Started
