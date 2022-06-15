@@ -14,7 +14,6 @@ Some of the features available are:
 - Professors can make and modify tests
 - Students can take tests
 - Results visible to students and professors
-- etc.
 
 ## 🧰 Languages & Tools
 
