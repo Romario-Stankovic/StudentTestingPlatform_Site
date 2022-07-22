@@ -1,70 +1,63 @@
 <h1 align="center">Student Testing Platform</h1>
 
-A Frontend application developed for student testing. This frontend was developed as part of a school project designed to learn the fundamentals of RESTful APIs and how they operate.
+This project was given as an exercise and opportunity to learn Full-Stack web development. The goal was to create a web application for student testing where professors could create tests and score students on said tests.
 
-The source code of the API can be found [HERE](https://github.com/Romario-Stankovic/Student_Testing_Platform_API).
+The project is split into two repositories:
+
+- [Frontend]("https://github.com/Romario-Stankovic/StudentTestingPlatform")
+- [Backend]("https://github.com/Romario-Stankovic/StudentTestingPlatform_API")
 
 ## 💡 Features
 
-Some of the features available are:
+The frontend has the following pages
 
 - Administrator Panel
 - Professor Panel
 - Student Panel
-- Professors can make and modify tests
-- Students can take tests
-- Results visible to students and professors
 
 ## 🧰 Languages & Tools
 
-  <a href="#"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" width="30px" alt="HTML"></a>
-  <a href="#"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" width="30px" alt="CSS"></a>
-  <a href="#"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" width="30px" alt="JavaScript"></a>
-  <a href="https://code.visualstudio.com/"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" width="30px" alt="VSCode"></a>
+  <a href="https://code.visualstudio.com/"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" width="30px" alt="VSCode" title="Visual Studio Code"></a>
+  <a href="#"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" width="30px" alt="HTML" title="HTML"></a>
+  <a href="#"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" width="30px" alt="CSS" title="CSS"></a>
+  <a href="#"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" width="30px" alt="JavaScript" title="JavaScript"></a>
 
 ## 📷 Screenshots
 
 ### Login Page
-
-<img src="assets/login.png" width="75%">
+![Login Page](./.github/images/login.png?raw=true)
 
 ### Admin Panel
-
-<img src="assets/admin.png" width="75%">
+![Login Page](./.github/images/admin.png?raw=true)
 
 ### Test Creation Panel
-
-<img src="assets/testcreation.png" width="75%">
+![Login Page](./.github/images/testcreation.png?raw=true)
 
 ### Student Test List
 
-<img src="assets/testlist.png" width="75%">
+![Login Page](./.github/images/testlist.png?raw=true)
 
 ### Test Assessment
-
-<img src="assets/testpanel.png" width="75%">
+![Login Page](./.github/images/testpanel.png?raw=true)
 
 ### Student Profile
-
-<img src="assets/profile.png" width="75%">
+![Login Page](./.github/images/profile.png?raw=true)
 
 ### Result Page
-
-<img src="assets/result.png" width="75%">
+![Login Page](./.github/images/result.png?raw=true)
 
 ## ⚡ Getting Started
 
-Requirements:
+### 🛠 Requirements:
 
-- Web Browser
-- Backend API
+- [Backend API]("https://github.com/Romario-Stankovic/StudentTestingPlatform_API")
 
-Guide:
+### 📖 Guide:
 
-1. Download and run the [API](https://github.com/Romario-Stankovic/Student_Testing_Platform_API)
-2. Download the frontend source code
-3. Open `studentLogin.html`, `adminLogin.html`, or `professorLogin.html` pages to get started
-4. Enjoy :)
+1. Download and run the backend
+2. Download the repository
+3. Open `studentLogin.html`, `adminLogin.html` or `professorLogin.html` to get started
+4. Enjoy 🙂
 
 ## ⚖ License
 This repository is not under any license. Normal copyright laws apply!
