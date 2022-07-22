@@ -1,4 +1,4 @@
-<h1 align="center">Student Testing Platform</h1>
+<h1 align="center">Student Testing Platform Frontend</h1>
 
 This project was given as an exercise and opportunity to learn Full-Stack web development. The goal was to create a web application for student testing where professors could create tests and score students on said tests.
 
