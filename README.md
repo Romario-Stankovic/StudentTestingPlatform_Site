@@ -7,6 +7,8 @@ The project is split into two repositories:
 - [Frontend]("https://github.com/Romario-Stankovic/StudentTestingPlatform")
 - [Backend]("https://github.com/Romario-Stankovic/StudentTestingPlatform_API")
 
+The frontend was built using vanilla HTML, CSS and JavaScript
+
 ## 💡 Features
 
 The frontend has the following pages
