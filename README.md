@@ -52,7 +52,7 @@ The frontend has the following pages
 
 ### 🛠 Requirements:
 
-- [Backend API]("https://github.com/Romario-Stankovic/StudentTestingPlatform_API")
+- [Backend API](https://github.com/Romario-Stankovic/StudentTestingPlatform_API)
 
 ### 📖 Guide:
 
