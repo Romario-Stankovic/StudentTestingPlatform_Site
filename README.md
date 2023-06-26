@@ -1,21 +1,19 @@
-<h1 align="center">Student Testing Platform Frontend</h1>
+<h1 align="center">Student Testing Platform Site</h1>
 
-This project was given as an exercise and opportunity to learn Full-Stack web development. The goal was to create a web application for student testing where professors could create tests and score students on said tests.
+"Student Testing Platform" was a side project given as a practical task at Singidunum University. The project was given as a opportunity to learn full stack development using NodeJS. The project features a basic frontend that is build using vanilla HTML, CSS, and JavaScript, while the backend was developed using NestJS and TypeScript.
 
 The project is split into two repositories:
 
 - [Frontend](https://github.com/Romario-Stankovic/StudentTestingPlatform)
 - [Backend](https://github.com/Romario-Stankovic/StudentTestingPlatform_API)
 
-The frontend was built using vanilla HTML, CSS and JavaScript
-
 ## 💡 Features
 
-The frontend has the following pages
+The site features three groups of pages
 
-- Administrator Panel
-- Professor Panel
-- Student Panel
+- Admin pages
+- Professor pages
+- Student pages
 
 ## 🧰 Languages & Tools
 
@@ -27,36 +25,36 @@ The frontend has the following pages
 ## 📷 Screenshots
 
 ### Login Page
-![Login Page](./.github/images/login.png?raw=true)
+![Login Page](.github/images/login.png?raw=true)
 
 ### Admin Panel
-![Login Page](./.github/images/admin.png?raw=true)
+![Login Page](.github/images/admin.png?raw=true)
 
 ### Test Creation Panel
-![Login Page](./.github/images/testcreation.png?raw=true)
+![Login Page](.github/images/testcreation.png?raw=true)
 
 ### Student Test List
 
-![Login Page](./.github/images/testlist.png?raw=true)
+![Login Page](.github/images/testlist.png?raw=true)
 
 ### Test Assessment
-![Login Page](./.github/images/testpanel.png?raw=true)
+![Login Page](.github/images/testpanel.png?raw=true)
 
 ### Student Profile
-![Login Page](./.github/images/profile.png?raw=true)
+![Login Page](.github/images/profile.png?raw=true)
 
 ### Result Page
-![Login Page](./.github/images/result.png?raw=true)
+![Login Page](.github/images/result.png?raw=true)
 
 ## ⚡ Getting Started
 
 ### 🛠 Requirements:
 
-- [Backend API](https://github.com/Romario-Stankovic/StudentTestingPlatform_API)
+- [Student Testing Platform API](https://github.com/Romario-Stankovic/StudentTestingPlatform_API)
 
 ### 📖 Guide:
 
-1. Download and run the backend
+1. Download and run the backend API
 2. Download the repository
 3. Open `studentLogin.html`, `adminLogin.html` or `professorLogin.html` to get started
 4. Enjoy 🙂
